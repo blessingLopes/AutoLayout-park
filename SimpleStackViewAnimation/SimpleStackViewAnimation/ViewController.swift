@@ -12,39 +12,12 @@ class ViewController: UIViewController {
     
     // MARK:- Properties
     
-    var example : String
+
     var labelsStackView: UIStackView!
     var aButton: UIButton!
     var on: Bool = false
     
-    
-    // MARK: Init
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        
-        example = " hello world"
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        example = " hello !"
-        super.init(coder: aDecoder)
-        
-    }
-    
-    
-    init() {
-        self.example = " hello !"
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    // MARK: De-init
-    
-    
-    
-    deinit{
-    }
-    
+
 
     // MARK:- View life cycle
     override func viewDidLoad() {
@@ -58,9 +31,8 @@ class ViewController: UIViewController {
     // MARK:- Private Convenience Methods
     
     private  func setupViewController(){
-        
+
         view.backgroundColor = .whiteColor()
-        
     }
     
     
@@ -99,7 +71,7 @@ class ViewController: UIViewController {
         view.addSubview(finalStackView)
         
         
-        // Center label horizontally
+        // Center stackView horizontally
         let constraintsLabel_H = NSLayoutConstraint.constraintsWithVisualFormat(
             "V:[superview]-(<=1)-[stack]",
             options: .AlignAllCenterX,
@@ -108,7 +80,7 @@ class ViewController: UIViewController {
         
         
         
-        // center Label vertically
+        // center stackView vertically
         let  constraintsLabel_V = NSLayoutConstraint.constraintsWithVisualFormat(
             "H:[superview]-(<=1)-[stack]",
             options: .AlignAllCenterY,
