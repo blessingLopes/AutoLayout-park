@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
 
     var labelsStackView: UIStackView!
+    var finalStackView: UIStackView!
     var aButton: UIButton!
     var on: Bool = false
     
@@ -32,7 +33,7 @@ class ViewController: UIViewController {
     
     private  func setupViewController(){
 
-        view.backgroundColor = .whiteColor()
+        view.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
     }
     
     
@@ -59,37 +60,21 @@ class ViewController: UIViewController {
         aButton.setTitle("Tap", forState: .Normal)
         aButton.titleLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption1)
         aButton.layer.cornerRadius = 5
-        aButton.layer.borderColor = aButton.tintColor.CGColor
-        aButton.layer.borderWidth = 1
+        aButton.layer.shadowOffset = CGSize(width: 3, height: 3)
+        aButton.layer.shadowColor = UIColor.blackColor().CGColor
+        aButton.layer.shadowOpacity = 0.2
+        
+        aButton.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
         aButton.addTarget(self, action:  #selector(ViewController.action(_:)), forControlEvents: .TouchDown)
         
-        let finalStackView = UIStackView(arrangedSubviews: [labelsStackView, aButton])
+        finalStackView = UIStackView(arrangedSubviews: [labelsStackView, aButton])
         finalStackView.axis = .Vertical
         finalStackView.spacing = 20
         finalStackView.translatesAutoresizingMaskIntoConstraints = false
-        
+    
         view.addSubview(finalStackView)
-        
-        
-        // Center stackView horizontally
-        let constraintsLabel_H = NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:[superview]-(<=1)-[stack]",
-            options: .AlignAllCenterX,
-            metrics: nil,
-            views: ["superview": view, "stack":aButton])
-        
-        
-        
-        // center stackView vertically
-        let  constraintsLabel_V = NSLayoutConstraint.constraintsWithVisualFormat(
-            "H:[superview]-(<=1)-[stack]",
-            options: .AlignAllCenterY,
-            metrics: nil,
-            views: ["superview":self.view, "stack":aButton])
-        
-        NSLayoutConstraint.activateConstraints(constraintsLabel_H)
-        NSLayoutConstraint.activateConstraints(constraintsLabel_V)
-        
+    
+
     }
     
     func action(tap: UIGestureRecognizer){
@@ -112,6 +97,68 @@ class ViewController: UIViewController {
         
     }
     
+    
+    override func viewWillTransitionToSize( size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator){
+        super.viewWillTransitionToSize(size , withTransitionCoordinator: coordinator)
+        
+        let  tranf = coordinator.targetTransform()
+        let invertedRotation  = CGAffineTransformInvert(tranf)
+        let currentBounds = view.bounds
+        let previousCenter = view.center
+        
+        coordinator.animateAlongsideTransition({
+            context in
+            
+            self.view.transform = CGAffineTransformConcat(self.view.transform, invertedRotation )
+            self.view.bounds = currentBounds
+            
+            if size.width < size.height {
+                self.finalStackView.center = self.view.center
+            }else{
+                self.finalStackView.center = previousCenter
+            }
+            
+            }, completion:
+                    ({ finished in
+                        
+                        UIView.animateWithDuration(1.0,  animations: {
+                        self.finalStackView.transform = CGAffineTransformConcat(self.finalStackView.transform, tranf )
+
+                    })
+                
+            })
+        )
+    }
+
+    
+    
+    override func updateViewConstraints() {
+        
+        // Center stackView horizontally
+        let constraintsLabel_H = NSLayoutConstraint.constraintsWithVisualFormat(
+            "V:[superview]-(<=1)-[stack]",
+            options: .AlignAllCenterX,
+            metrics: nil,
+            views: ["superview": view, "stack":finalStackView])
+        
+        // center stackView vertically
+        let  constraintsLabel_V = NSLayoutConstraint.constraintsWithVisualFormat(
+            "H:[superview]-(<=1)-[stack]",
+            options: .AlignAllCenterY,
+            metrics: nil,
+            views: ["superview":self.view, "stack":finalStackView])
+        
+        NSLayoutConstraint.activateConstraints(constraintsLabel_H)
+        NSLayoutConstraint.activateConstraints(constraintsLabel_V)
+        
+        super.updateViewConstraints()
+    }
+    
+    
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
     
     
 }// END
