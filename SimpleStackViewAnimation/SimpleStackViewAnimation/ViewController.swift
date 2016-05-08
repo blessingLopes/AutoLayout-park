@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     var example : String
     var labelsStackView: UIStackView!
+    var aButton: UIButton!
     var on: Bool = false
     
     
@@ -44,19 +45,11 @@ class ViewController: UIViewController {
     deinit{
     }
     
-    
-    
-    
-    
-    
-    
+
     // MARK:- View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
+  
         setupViewController()
         setupLabels()
     }
@@ -90,8 +83,8 @@ class ViewController: UIViewController {
         labelsStackView.spacing = 20
         
         
-        let aButton = UIButton(type: .System)
-        aButton.setTitle("Dull tap", forState: .Normal)
+        aButton = UIButton(type: .System)
+        aButton.setTitle("Tap", forState: .Normal)
         aButton.titleLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption1)
         aButton.layer.cornerRadius = 5
         aButton.layer.borderColor = aButton.tintColor.CGColor
@@ -128,8 +121,9 @@ class ViewController: UIViewController {
     }
     
     func action(tap: UIGestureRecognizer){
-        
+      
         on = !on
+        let buttonTittle = on ? "Show" : "Hide"
         
         UIView.animateWithDuration(
             0.5,
@@ -139,6 +133,7 @@ class ViewController: UIViewController {
             options: [],
             animations: {
                 self.labelsStackView.hidden  = self.on
+                self.aButton.setTitle(buttonTittle, forState: .Normal)
             },
             completion: nil
         )
