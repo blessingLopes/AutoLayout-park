@@ -5,6 +5,4 @@ Series of Swift - IOS projects focused on AutoLayout and Animation.
 
 * SimpleStackViewAnimation
 
-```
 ![Alt Text](http://manuelcarlos.github.io/images/StackViewRotationBigger.gif)
-```
