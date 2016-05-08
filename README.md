@@ -1,7 +1,7 @@
 # AutoLayout-park
 ### Swift 2.2 - IOS9+
 
-Swift IOS projects focused around AutoLayout and animation.
+Series of Swift - IOS projects focused on AutoLayout and Animation. 
 
 * SimpleStackViewAnimation
 
