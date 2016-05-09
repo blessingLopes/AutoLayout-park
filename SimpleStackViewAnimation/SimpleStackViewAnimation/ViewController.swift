@@ -13,11 +13,11 @@ class ViewController: UIViewController {
     // MARK:- Properties
     
 
-    var labelsStackView: UIStackView!
     var finalStackView: UIStackView!
     var aButton: UIButton!
     var on: Bool = false
     
+    let avatarImageHeight: CGFloat = 150.0
 
 
     // MARK:- View life cycle
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
   
         setupViewController()
-        setupLabels()
+        setupStackViews()
     }
     
     
@@ -33,54 +33,68 @@ class ViewController: UIViewController {
     
     private  func setupViewController(){
 
-        view.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+        view.backgroundColor = .whiteColor()
     }
     
     
-    private func setupLabels(){
-        
+    private func setupStackViews(){
+ 
+        let userPic = UIImageView(image: UIImage(named: "profilePic.jpg")!)
+        userPic.contentMode = .ScaleAspectFit
+        userPic.clipsToBounds = true
+        userPic.layer.cornerRadius = 25
+
+
+       
         let nameLabel = UILabel(frame: .zero)
-        nameLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-        nameLabel.text = "Hi! My name is "
+        nameLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption1)
+        nameLabel.text = "Hi, I'm Manuel Carlos"
         nameLabel.textAlignment = .Center
         
-        let lastNameLabel = UILabel(frame: .zero)
-        lastNameLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption1)
-        lastNameLabel.text = "Manuel Carlos"
-        lastNameLabel.textAlignment = .Center
         
         
+        let userProfileView = UIStackView(arrangedSubviews: [userPic, nameLabel])
+        userProfileView.axis = .Vertical
+        userProfileView.spacing = 30
+        userProfileView.distribution = UIStackViewDistribution.EqualCentering
+   
         
-        labelsStackView = UIStackView(arrangedSubviews: [nameLabel, lastNameLabel])
-        labelsStackView.axis = .Vertical
-        labelsStackView.spacing = 20
+        // better  be set only after the view has been added to the stackView
+        userPic.widthAnchor.constraintEqualToConstant(avatarImageHeight).active = true
+        userPic.heightAnchor.constraintEqualToConstant(avatarImageHeight).active = true
+
         
-        
+        // setup a simple button
         aButton = UIButton(type: .System)
         aButton.setTitle("Tap", forState: .Normal)
         aButton.titleLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption1)
-        aButton.layer.cornerRadius = 5
-        aButton.layer.shadowOffset = CGSize(width: 3, height: 3)
+        aButton.layer.cornerRadius = 10
+        aButton.layer.shadowOffset = CGSize(width: 2, height: 2)
         aButton.layer.shadowColor = UIColor.blackColor().CGColor
-        aButton.layer.shadowOpacity = 0.2
-        
-        aButton.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
+        aButton.layer.shadowOpacity = 0.1
+        aButton.backgroundColor = .redColor()
+        aButton.tintColor = .whiteColor()
         aButton.addTarget(self, action:  #selector(ViewController.action(_:)), forControlEvents: .TouchDown)
         
-        finalStackView = UIStackView(arrangedSubviews: [labelsStackView, aButton])
+        
+        finalStackView = UIStackView(arrangedSubviews: [userProfileView, aButton])
         finalStackView.axis = .Vertical
         finalStackView.spacing = 20
         finalStackView.translatesAutoresizingMaskIntoConstraints = false
     
-        view.addSubview(finalStackView)
     
+        view.addSubview(finalStackView)
+   
 
     }
+    
+    //MARK: - Button action
     
     func action(tap: UIGestureRecognizer){
       
         on = !on
         let buttonTittle = on ? "Show" : "Hide"
+        let topStack = finalStackView.arrangedSubviews[0]
         
         UIView.animateWithDuration(
             0.5,
@@ -89,7 +103,8 @@ class ViewController: UIViewController {
             initialSpringVelocity: 6,
             options: [],
             animations: {
-                self.labelsStackView.hidden  = self.on
+                topStack.hidden  = self.on
+                
                 self.aButton.setTitle(buttonTittle, forState: .Normal)
             },
             completion: nil
@@ -97,7 +112,7 @@ class ViewController: UIViewController {
         
     }
     
-    
+    // MARK:- Handle Device Rotation
     override func viewWillTransitionToSize( size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator){
         super.viewWillTransitionToSize(size , withTransitionCoordinator: coordinator)
         
@@ -112,26 +127,28 @@ class ViewController: UIViewController {
             self.view.transform = CGAffineTransformConcat(self.view.transform, invertedRotation )
             self.view.bounds = currentBounds
             
-            if size.width < size.height {
-                self.finalStackView.center = self.view.center
-            }else{
-                self.finalStackView.center = previousCenter
-            }
+            
+            if size.width < size.height { self.finalStackView.center = self.view.center }
+            else{   self.finalStackView.center = previousCenter }
+            
             
             }, completion:
-                    ({ finished in
-                        
+                    ({ _ in
                         UIView.animateWithDuration(1.0,  animations: {
-                        self.finalStackView.transform = CGAffineTransformConcat(self.finalStackView.transform, tranf )
-
+                            self.finalStackView.transform = CGAffineTransformConcat(self.finalStackView.transform, tranf )
+                                if self.finalStackView.axis == .Horizontal { self.finalStackView.axis = .Vertical }
+                                else { self.finalStackView.axis = .Horizontal  }
+                        
                     })
-                
             })
         )
     }
 
     
     
+    
+    
+    //MARK:- center the stacks
     override func updateViewConstraints() {
         
         // Center stackView horizontally
@@ -155,7 +172,7 @@ class ViewController: UIViewController {
     }
     
     
-    
+    //MARK:- Status bar preferences
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
