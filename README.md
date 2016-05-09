@@ -3,8 +3,10 @@
 
 Series of Swift - IOS projects focused on AutoLayout and Animation. 
 
-* SimpleStackViewAnimation
+* Simple Stack View Animation - [SimpleStackViewAnimation](https://github.com/manuelCarlos/AutoLayout-park/tree/master/SimpleStackViewAnimation)
  - Custom rotation animation
+
+ 
 <p align="center">
    <img src="http://manuelcarlos.github.io/images/stackViewRotation.gif" >
 </p>
