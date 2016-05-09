@@ -3,7 +3,7 @@
 
 Series of Swift - IOS projects focused on AutoLayout and Animation. 
 
-* Simple Stack View Animation - [SimpleStackViewAnimation](https://github.com/manuelCarlos/AutoLayout-park/tree/master/SimpleStackViewAnimation)
+* [SimpleStackViewAnimation](https://github.com/manuelCarlos/AutoLayout-park/tree/master/SimpleStackViewAnimation)
  - Custom rotation animation
 
  
@@ -12,6 +12,6 @@ Series of Swift - IOS projects focused on AutoLayout and Animation.
 </p>
 
 
-----
+
 #### License
  - “This project is licensed under the terms of the MIT license.
