@@ -10,6 +10,6 @@ Series of Swift - IOS projects focused on AutoLayout and Animation.
 </p>
 
 
-
+----
 #### License
  - “This project is licensed under the terms of the MIT license.
