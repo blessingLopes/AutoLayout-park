@@ -8,3 +8,8 @@ Series of Swift - IOS projects focused on AutoLayout and Animation.
 <p align="center">
    <img src="http://manuelcarlos.github.io/images/stackViewRotation.gif" >
 </p>
+
+
+
+#### License
+ - “This project is licensed under the terms of the MIT license.
