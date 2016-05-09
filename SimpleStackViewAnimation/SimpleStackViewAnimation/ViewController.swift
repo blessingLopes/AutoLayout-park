@@ -136,8 +136,6 @@ class ViewController: UIViewController {
                     ({ _ in
                         UIView.animateWithDuration(1.0,  animations: {
                             self.finalStackView.transform = CGAffineTransformConcat(self.finalStackView.transform, tranf )
-                                if self.finalStackView.axis == .Horizontal { self.finalStackView.axis = .Vertical }
-                                else { self.finalStackView.axis = .Horizontal  }
                         
                     })
             })
