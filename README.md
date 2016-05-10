@@ -11,6 +11,9 @@ All projects meet two conditions:
  2. No third party frameworks or APIs.
 
 * [PlayerLayout](https://github.com/manuelCarlos/AutoLayout-park/tree/master/playerLayout)
+ - Nested UIStackViews.
+ - Custom View Controller rotation animation.
+ - Constraints Using Layout Anchors.
 
 <p align="center">
    <img src="http://manuelcarlos.github.io/images/playerLayout.gif" >
