@@ -66,9 +66,9 @@ class ViewController: UIViewController {
         
         // setup a simple button
         aButton = UIButton(type: .System)
-        aButton.setTitle("Tap", forState: .Normal)
+        aButton.setTitle("  T a p  ", forState: .Normal)
         aButton.titleLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption1)
-        aButton.layer.cornerRadius = 10
+//        aButton.layer.cornerRadius = 10
         aButton.layer.shadowOffset = CGSize(width: 2, height: 2)
         aButton.layer.shadowColor = UIColor.blackColor().CGColor
         aButton.layer.shadowOpacity = 0.1
@@ -81,6 +81,8 @@ class ViewController: UIViewController {
         finalStackView.axis = .Vertical
         finalStackView.spacing = 20
         finalStackView.translatesAutoresizingMaskIntoConstraints = false
+        finalStackView.alignment = .Center
+//         finalStackView.distribution = UIStackViewDistribution.
     
     
         view.addSubview(finalStackView)
@@ -93,7 +95,7 @@ class ViewController: UIViewController {
     func action(tap: UIGestureRecognizer){
       
         on = !on
-        let buttonTittle = on ? "Show" : "Hide"
+        let buttonTittle = on ? "  S h o w  " : "  H i d e  "
         let topStack = finalStackView.arrangedSubviews[0]
         
         UIView.animateWithDuration(
