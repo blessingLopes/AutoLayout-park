@@ -19,6 +19,13 @@ All projects meet two conditions:
    <img src="http://manuelcarlos.github.io/images/playerLayout.gif" >
 </p>
 
+* [collectionCellLayout](https://github.com/manuelCarlos/AutoLayout-park/tree/master/collectionCellLayout)
+ - Layout anchor constraints applied to UICollectoinViewCell
+ 
+<p align="center">
+   <img src="http://manuelcarlos.github.io/images/CollectionCellLayout.gif” >
+</p>
+
 
 #### License
  - This project is licensed under the terms of the MIT license.
