@@ -10,13 +10,6 @@ All projects meet two conditions:
  1. No Storyboards or use of interface builder.
  2. No third party frameworks or APIs.
 
-
-* [SimpleStackViewAnimation](https://github.com/manuelCarlos/AutoLayout-park/tree/master/SimpleStackViewAnimation)
-
-<p align="center">
-   <img src="http://manuelcarlos.github.io/images/stackViewRotation.gif" >
-</p>
-
 * [PlayerLayout](https://github.com/manuelCarlos/AutoLayout-park/tree/master/playerLayout)
 
 <p align="center">
