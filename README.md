@@ -3,7 +3,7 @@
 
 
 
-These projects are meant to explore AutoLayout in IOS, in particular  the new IOS9 APIs and how to animate those properties:
+These projects try to explore AutoLayout in IOS, in particular  the new IOS9 APIs and how to use them to create animations.
 
 
 All projects meet two conditions: 
@@ -12,7 +12,6 @@ All projects meet two conditions:
 
 
 * [SimpleStackViewAnimation](https://github.com/manuelCarlos/AutoLayout-park/tree/master/SimpleStackViewAnimation)
- - Custom rotation animation
 
 <p align="center">
    <img src="http://manuelcarlos.github.io/images/stackViewRotation.gif" >
@@ -26,4 +25,4 @@ All projects meet two conditions:
 
 
 #### License
- - “This project is licensed under the terms of the MIT license.
+ - This project is licensed under the terms of the MIT license.
