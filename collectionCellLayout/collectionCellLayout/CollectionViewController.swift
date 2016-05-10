@@ -49,8 +49,6 @@ class CollectionViewController: UICollectionViewController{
     // MARK:- collection view Delegate
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         animateCellAt(index: indexPath)
-        let cell  = collectionView.cellForItemAtIndexPath(indexPath) as! Cell
-       
       
     }
 
