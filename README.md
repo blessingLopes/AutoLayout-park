@@ -20,7 +20,7 @@ All projects meet two conditions:
 </p>
 
 * [collectionCellLayout](https://github.com/manuelCarlos/AutoLayout-park/tree/master/collectionCellLayout)
- - Layout anchor constraints applied to UICollectoinViewCell
+ - Layout anchor constraints applied to UICollectoinViewCell.
  
 <p align="center">
    <img src="http://manuelcarlos.github.io/images/CollectionCellLayout.gif” >
