@@ -1,7 +1,15 @@
 #AutoLayout-park
 ### Swift 2.2 - IOS9+
 
-Series of Swift - IOS projects focused on AutoLayout and Animation. 
+
+
+These projects are meant to explore AutoLayout in IOS, in particular  the new IOS9 APIs and how to animate those properties:
+
+
+All projects meet two conditions: 
+ 1. No Storyboards or use of interface builder.
+ 2. No third party frameworks or APIs.
+
 
 * [SimpleStackViewAnimation](https://github.com/manuelCarlos/AutoLayout-park/tree/master/SimpleStackViewAnimation)
  - Custom rotation animation
