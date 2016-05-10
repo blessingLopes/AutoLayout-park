@@ -24,7 +24,7 @@ All projects meet two conditions:
  
 
 <p align="center">
-   <img src="http://manuelcarlos.github.io/images/CollectionCellLayout.gif” >
+   <img src="http://manuelcarlos.github.io/images/CollectionCellLayout.gif" >
 </p>
 
 
