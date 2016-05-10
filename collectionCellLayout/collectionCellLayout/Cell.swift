@@ -17,12 +17,8 @@ class Cell: UICollectionViewCell {
 
 	let labelTemp: UILabel = UILabel()
     let land: UILabel = UILabel()
-//    let city: UILabel = UILabel()
-    var weatherStack: UIStackView!
-    
-    
-    
-	
+    let city: UILabel = UILabel()
+    let time: UILabel = UILabel()
 
 	
 	//MARK:- Init
@@ -53,8 +49,12 @@ class Cell: UICollectionViewCell {
         land.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor, constant: 20).active = true
         land.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor).active = true
         
-        weatherStack.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor, constant: 0).active = true
-        weatherStack.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor,constant: 0 ).active = true
+        city.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor, constant: 0).active = true
+        city.bottomAnchor.constraintEqualToAnchor(land.topAnchor, constant: -10).active = true
+        
+        time.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor, constant: -10).active = true
+        time.topAnchor.constraintEqualToAnchor(margins.topAnchor, constant: 5).active = true
+  
         super.updateConstraints()
     }
     
@@ -62,18 +62,6 @@ class Cell: UICollectionViewCell {
     
     
     //MARK:- private convenience methods
-    
-    
-    private func makeButtonWithTitle(title: String,  fontSize: Int, color: UIColor = .whiteColor()) -> UIButton {
-        let button = UIButton(type: .System)
-//        button.backgroundColor = .redColor()
-        button.tintColor = color
-        button.setTitle(title, forState: .Normal)
-        button.titleLabel?.font = .boldSystemFontOfSize(CGFloat(fontSize))
-        return button
-    }
-    
-
     
     private func setupLabel(){
         
@@ -91,23 +79,25 @@ class Cell: UICollectionViewCell {
         land.numberOfLines = 0
         land.textColor = .whiteColor()
 
+        city.textAlignment = .Left
+        city.lineBreakMode = .ByTruncatingTail
+        city.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption2)
+        city.translatesAutoresizingMaskIntoConstraints = false
+        city.numberOfLines = 0
+        city.textColor = .whiteColor()
 
         
-        // Horizontal stackView holding the Bottom buttons
+        time.textAlignment = .Left
+        time.lineBreakMode = .ByTruncatingTail
+        time.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption2)
+        time.translatesAutoresizingMaskIntoConstraints = false
+        time.numberOfLines = 0
+        time.textColor = .whiteColor()
         
-        let time = makeButtonWithTitle("12:93pm ", fontSize: 10)
-        let sun = makeButtonWithTitle("☀︎", fontSize: 14)
-       
-        
-        
-        weatherStack = UIStackView(arrangedSubviews: [sun,  time])
-        weatherStack.distribution = .FillEqually
-        weatherStack.translatesAutoresizingMaskIntoConstraints = false
-        
-
         contentView.addSubview(labelTemp)
         contentView.addSubview(land)
-        contentView.addSubview(weatherStack)
+        contentView.addSubview(city)
+        contentView.addSubview(time)
 
         setNeedsUpdateConstraints()
         

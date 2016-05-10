@@ -20,13 +20,11 @@ class Layout: UICollectionViewLayout {
     var contentSize : CGSize = CGSizeZero
     var tappedCellIndexPath: NSIndexPath? 
     
-    //MARK:- Methods a subclass needs to override
+ 
     // Prepare the  Layout
 	override func prepareLayout() {
         
         prepareCells()
-        
-
 	}
 	
 	
@@ -140,7 +138,6 @@ class Layout: UICollectionViewLayout {
                     height: indexPath == tappedCellIndexPath ? LayoutSetupValues.animationStretch : cellsize.height
                 )
            
-                
                 attributes.frame =  CGRectMake(0, yindex, cellsize.width, newSize.height)
                 attributes.alpha = 1.0
                 zindex -= 1
@@ -149,8 +146,6 @@ class Layout: UICollectionViewLayout {
                 
                 yindex += newSize.height
             }
-
-
         }
         contentSize = CGSizeMake(0.0, yindex )
     }

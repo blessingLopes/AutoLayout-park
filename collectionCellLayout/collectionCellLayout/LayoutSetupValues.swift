@@ -29,7 +29,7 @@ struct LayoutSetupValues {
     
 	
 	// The Cell Size
-   static var cellSize : CGSize { return CGSizeMake(LayoutSetupValues.cellWidth, 60)  }
+   static var cellSize : CGSize { return CGSizeMake(LayoutSetupValues.cellWidth, 70)  }
 	
 	
 }
