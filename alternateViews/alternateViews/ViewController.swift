@@ -28,21 +28,17 @@ class ViewController: UIViewController {
         
         land.frame = view.bounds
         port.frame = view.bounds
-        
 
-
-        
     }
+    
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         view.addSubview(port)
+        view.addSubview(land)
         
-         view.addSubview(land)
-        
-        
-       
     }
 
     
@@ -50,10 +46,7 @@ class ViewController: UIViewController {
     override func viewWillTransitionToSize( size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator){
         super.viewWillTransitionToSize(size , withTransitionCoordinator: coordinator)
         
-  
-     
-        
-        let viewForCurrentOrientation = size.width > size.height ? port as PortraitView: land as LandscapeView
+        let viewForCurrentOrientation = size.width > size.height ? port : land 
         let viewForFinal = size.width > size.height ? land  : port
         
         let snapshot = viewForCurrentOrientation.snapshotViewAfterScreenUpdates(false)
@@ -62,9 +55,7 @@ class ViewController: UIViewController {
         
         view.insertSubview(snapshot, aboveSubview: viewForCurrentOrientation)
         viewForFinal.alpha = 0
-       
 
-        
         coordinator.animateAlongsideTransition({
             context in
             
@@ -82,31 +73,6 @@ class ViewController: UIViewController {
     }
 
 
-
-    
-    private func addConstrainsts(){
-        
-        let  margins  = view.layoutMarginsGuide
-        
-        port.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor).active = true
-        port.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor).active = true
-        port.topAnchor.constraintEqualToAnchor(margins.topAnchor).active = true
-        port.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor).active = true
-        
-    
-    }
-
-    
-    private func addConstraintsToLandscape(){
-        
-         let  margins  = view.layoutMarginsGuide
-        land.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor).active = true
-        land.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor).active = true
-        land.topAnchor.constraintEqualToAnchor(margins.topAnchor).active = true
-        land.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor).active = true
-
-    
-    }
     
     
 }// ENd

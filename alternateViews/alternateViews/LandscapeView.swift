@@ -11,32 +11,31 @@ import UIKit
 
 class LandscapeView: UIView{
 
-    
-  
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.setup()
+        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self.setup()
+        setup()
     }
     
     convenience init() {
         self.init(frame: CGRectZero)
         
-        self.setup()
+        setup()
     }
     
-    func setup() {
+    
+    
+    
+   private func setup() {
         let margins = self.layoutMarginsGuide
         backgroundColor = .whiteColor()
-        
-
 
         let title: UILabel = setupTitle()
         let pic = setUpProfilePic()
@@ -46,7 +45,6 @@ class LandscapeView: UIView{
         
         addSubview(title)
         addSubview(pic)
-        
         addSubview(plus)
         addSubview(back)
     
@@ -103,20 +101,17 @@ class LandscapeView: UIView{
     }
     
     
-
-
     
 // equivalent to viweWillAppear()
     override func willMoveToSuperview(newSuperview: UIView?) {
         super.willMoveToSuperview(newSuperview)
-    
+        // nothing here for now
     }
 
 // equivalente to viewWillLayoutSubviews() and viewDidLayoutSubviews()
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        // layout Code here
+        // nothing here for now
     }
 
     

@@ -10,11 +10,7 @@ import UIKit
 
 class PortraitView: UIView{
 
-    
-    
- 
-    
-    
+
 override init(frame: CGRect) {
     super.init(frame: frame)
     
