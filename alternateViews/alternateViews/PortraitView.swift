@@ -25,8 +25,6 @@ required init?(coder aDecoder: NSCoder) {
 
 convenience init() {
     self.init(frame: CGRectZero)
-    
-    self.setup()
 }
 
 func setup() {

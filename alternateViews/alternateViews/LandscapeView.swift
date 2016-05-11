@@ -26,8 +26,7 @@ class LandscapeView: UIView{
     
     convenience init() {
         self.init(frame: CGRectZero)
-        
-        setup()
+  
     }
     
     
