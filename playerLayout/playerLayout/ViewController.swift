@@ -3,7 +3,7 @@
 //  playerLayout
 //
 //  Created by Manuel Lopes on 09/05/16.
-//  Copyright © 2016 Manuel Lopes. All rights reserved.
+
 //
 
 import UIKit

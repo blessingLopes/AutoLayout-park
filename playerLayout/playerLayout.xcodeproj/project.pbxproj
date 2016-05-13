@@ -53,12 +53,28 @@
 			isa = PBXGroup;
 			children = (
 				64891A5C1CE0F99E000EC2C7 /* AppDelegate.swift */,
-				64891A5E1CE0F99E000EC2C7 /* ViewController.swift */,
+				64F19DB91CE58BC60062E89C /* Controllers */,
+				64F19DB81CE58BB80062E89C /* Support */,
+			);
+			path = playerLayout;
+			sourceTree = "<group>";
+		};
+		64F19DB81CE58BB80062E89C /* Support */ = {
+			isa = PBXGroup;
+			children = (
 				64891A651CE0F99E000EC2C7 /* LaunchScreen.storyboard */,
 				64891A681CE0F99E000EC2C7 /* Info.plist */,
 				64891A721CE177EE000EC2C7 /* Assets.xcassets */,
 			);
-			path = playerLayout;
+			name = Support;
+			sourceTree = "<group>";
+		};
+		64F19DB91CE58BC60062E89C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				64891A5E1CE0F99E000EC2C7 /* ViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
