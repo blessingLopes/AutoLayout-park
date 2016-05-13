@@ -41,9 +41,7 @@ All projects meet two conditions:
  - Animate layout changes using UIView animations.
  
 
-<p align="center">
-   <img src="http://manuelcarlos.github.io/images/planetLayoutAnimation.gif" >
-</p>
+
 
 
 
