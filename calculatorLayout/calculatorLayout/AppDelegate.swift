@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  calculatorLayout
 //
-//  Created by Manuel Lopes on 13/05/16.
-//  Copyright © 2016 Manuel Carlos. All rights reserved.
+//  Created by Manuel Lopes on 12/05/16.
+//  Copyright © 2016 Manuel Lopes. All rights reserved.
 //
 
 import UIKit
@@ -15,17 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-       
+        
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
-        window?.rootViewController = ViewController
+        window?.rootViewController = CalculatorViewController()
         window?.makeKeyAndVisible()
-        
-        
         return true
     }
 
-   
+ 
 
 
 }
