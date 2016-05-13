@@ -29,7 +29,7 @@ All projects meet two conditions:
 
 * [alternateViews](https://github.com/manuelCarlos/AutoLayout-park/tree/master/alternateViews)
  - Alternate between two different view on device rotatiton.
- - Both view remain on the view hierarchy after rotation.  
+ - Both views remain on the view hierarchy after rotation.  
 
 <p align="center">
    <img src="http://manuelcarlos.github.io/images/alternateView.gif" >
