@@ -53,12 +53,28 @@
 			isa = PBXGroup;
 			children = (
 				64F19D8C1CE567310062E89C /* AppDelegate.swift */,
-				64F19D8E1CE567380062E89C /* SolarSystemVC.swift */,
+				64F19DB71CE58B620062E89C /* Controllers */,
+				64F19DB61CE58B540062E89C /* Support */,
+			);
+			path = planetLayoutAnimation;
+			sourceTree = "<group>";
+		};
+		64F19DB61CE58B540062E89C /* Support */ = {
+			isa = PBXGroup;
+			children = (
 				64F19D811CE566EC0062E89C /* Assets.xcassets */,
 				64F19D831CE566EC0062E89C /* LaunchScreen.storyboard */,
 				64F19D861CE566EC0062E89C /* Info.plist */,
 			);
-			path = planetLayoutAnimation;
+			name = Support;
+			sourceTree = "<group>";
+		};
+		64F19DB71CE58B620062E89C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				64F19D8E1CE567380062E89C /* SolarSystemVC.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
