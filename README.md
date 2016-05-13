@@ -42,7 +42,7 @@ All projects meet two conditions:
  
 
 <p align="center">
-   <img src="http://manuelcarlos.github.io/images/planetLayoutAnimation.gif" >
+   <img src="http://manuelcarlos.github.io/images/planetAnimation.gif" >
 </p>
 
 
