@@ -38,10 +38,12 @@ All projects meet two conditions:
 
 * [planetLayoutAnimation](https://github.com/manuelCarlos/AutoLayout-park/tree/master/planetLayoutAnimation)
  - Layout guides and anchors to create constraints.
- - Animate layout changes using UIView animations.
+ - Animate constraints using UIView animations.
  
 
-
+<p align="center">
+   <img src="http://manuelcarlos.github.io/images/planetLayoutAnimation.gif" >
+</p>
 
 
 
