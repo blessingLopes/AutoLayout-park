@@ -61,16 +61,56 @@
 			isa = PBXGroup;
 			children = (
 				64BDFBE41CE2006A00FE0E6F /* AppDelegate.swift */,
-				64BDFBE51CE2006A00FE0E6F /* Cell.swift */,
-				64BDFBF41CE2316300FE0E6F /* Layout.swift */,
-				64BDFBE61CE2006A00FE0E6F /* CollectionViewController.swift */,
-				64BDFBE71CE2006A00FE0E6F /* CollectionViewDataSource.swift */,
-				64BDFBEE1CE2007800FE0E6F /* LayoutSetupValues.swift */,
+				64F19DB51CE58AF20062E89C /* Views */,
+				64F19DB21CE58AB00062E89C /* Layout */,
+				64F19DB31CE58AC40062E89C /* Controllers */,
+				64F19DB41CE58AE30062E89C /* Model */,
+				64F19DB11CE58A750062E89C /* Support */,
+			);
+			path = collectionCellLayout;
+			sourceTree = "<group>";
+		};
+		64F19DB11CE58A750062E89C /* Support */ = {
+			isa = PBXGroup;
+			children = (
 				64BDFBD91CE1FF7F00FE0E6F /* Assets.xcassets */,
 				64BDFBDB1CE1FF7F00FE0E6F /* LaunchScreen.storyboard */,
 				64BDFBDE1CE1FF7F00FE0E6F /* Info.plist */,
 			);
-			path = collectionCellLayout;
+			name = Support;
+			sourceTree = "<group>";
+		};
+		64F19DB21CE58AB00062E89C /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				64BDFBF41CE2316300FE0E6F /* Layout.swift */,
+				64BDFBEE1CE2007800FE0E6F /* LayoutSetupValues.swift */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
+		64F19DB31CE58AC40062E89C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				64BDFBE61CE2006A00FE0E6F /* CollectionViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		64F19DB41CE58AE30062E89C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				64BDFBE71CE2006A00FE0E6F /* CollectionViewDataSource.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		64F19DB51CE58AF20062E89C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				64BDFBE51CE2006A00FE0E6F /* Cell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
