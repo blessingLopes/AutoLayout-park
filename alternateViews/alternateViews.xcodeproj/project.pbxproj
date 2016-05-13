@@ -18,12 +18,12 @@
 /* Begin PBXFileReference section */
 		640CE6561CE346DE008EA902 /* alternateViews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alternateViews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		640CE6591CE346DE008EA902 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		640CE65B1CE346DE008EA902 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		640CE65B1CE346DE008EA902 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controllers/ViewController.swift; sourceTree = "<group>"; };
 		640CE6601CE346DE008EA902 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		640CE6631CE346DE008EA902 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		640CE6651CE346DE008EA902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		640CE66B1CE347AB008EA902 /* PortraitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortraitView.swift; sourceTree = "<group>"; };
-		640CE66D1CE347C3008EA902 /* LandscapeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandscapeView.swift; sourceTree = "<group>"; };
+		640CE66B1CE347AB008EA902 /* PortraitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PortraitView.swift; path = Views/PortraitView.swift; sourceTree = "<group>"; };
+		640CE66D1CE347C3008EA902 /* LandscapeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandscapeView.swift; path = Views/LandscapeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,14 +57,38 @@
 			isa = PBXGroup;
 			children = (
 				640CE6591CE346DE008EA902 /* AppDelegate.swift */,
-				640CE65B1CE346DE008EA902 /* ViewController.swift */,
+				64F19DAF1CE5895C0062E89C /* Controllers */,
+				64F19DAE1CE5894C0062E89C /* Views */,
+				64F19DB01CE589890062E89C /* Support */,
+			);
+			path = alternateViews;
+			sourceTree = "<group>";
+		};
+		64F19DAE1CE5894C0062E89C /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				640CE66B1CE347AB008EA902 /* PortraitView.swift */,
 				640CE66D1CE347C3008EA902 /* LandscapeView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		64F19DAF1CE5895C0062E89C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				640CE65B1CE346DE008EA902 /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		64F19DB01CE589890062E89C /* Support */ = {
+			isa = PBXGroup;
+			children = (
 				640CE6601CE346DE008EA902 /* Assets.xcassets */,
 				640CE6621CE346DE008EA902 /* LaunchScreen.storyboard */,
 				640CE6651CE346DE008EA902 /* Info.plist */,
 			);
-			path = alternateViews;
+			name = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +314,7 @@
 				640CE66A1CE346DE008EA902 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
