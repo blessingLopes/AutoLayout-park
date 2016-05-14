@@ -47,5 +47,19 @@ All projects meet two conditions:
 
 
 
+* [calculatorLayout](https://github.com/manuelCarlos/AutoLayout-park/tree/master/calculatorLayout)
+ - Layout guides create constraints.
+ - Custom rotation animation of nested UIstackViews
+ 
+
+<p align="center">
+   <img src="http://manuelcarlos.github.io/images/calculatorLayout.gif" >
+</p>
+
+
+
+
+
+
 #### License
  - This project is licensed under the terms of the MIT license.
