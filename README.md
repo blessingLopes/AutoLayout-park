@@ -57,6 +57,14 @@ All projects meet two conditions:
 </p>
 
 
+* [timelineLayout](https://github.com/manuelCarlos/AutoLayout-park/tree/master/timelineLayout)
+ - UILayoutGuides  and UIStackView for self-sizing cell layout.
+ - Support for Dynamic type.  
+
+<p align="center">
+   <img src="http://manuelcarlos.github.io/images/timeLineLayout.gif" >
+</p>
+
 
 
 
