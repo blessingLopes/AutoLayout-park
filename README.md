@@ -9,7 +9,7 @@ All projects meet two conditions:
  1. No Storyboards or use of interface builder.
  2. No third party frameworks or APIs.
 
-**Please note:** that the UITableViews or UICollectionsViews used in these sample projects are fully functional but most of the UI elements are only used to construct the layout together with the animations, and don't support any user interaction.
+**Please note:** that the UITableViews or UICollectionsViews used in these sample projects are fully functional but most of the UI elements are only used to construct the layout and don't support any user interaction.
 
 * [PlayerLayout](https://github.com/manuelCarlos/AutoLayout-park/tree/master/playerLayout)
  - Nested UIStackViews.
