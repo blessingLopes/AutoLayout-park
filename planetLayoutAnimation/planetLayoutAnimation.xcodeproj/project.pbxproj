@@ -109,6 +109,9 @@
 				TargetAttributes = {
 					64F19D761CE566EC0062E89C = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = AHT5EPN339;
+						DevelopmentTeamName = "Blessing Itesurobo (Personal Team)";
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -259,6 +262,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mc.planetLayoutAnimation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -272,6 +276,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mc.planetLayoutAnimation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

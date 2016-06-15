@@ -13,11 +13,11 @@ class SolarSystemVC: UIViewController{
     var portraitConstraints: [NSLayoutConstraint]  = []
     
     // Closure to create the planets
-    lazy var makePlanet : String -> UIImageView = { p in
+    lazy var makePlanet : (String) -> UIImageView = { p in
         
         let imageView: UIImageView = UIImageView()
         imageView.image = UIImage(named: p)
-        imageView.contentMode = .ScaleAspectFit
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(imageView)
         return imageView
@@ -27,13 +27,13 @@ class SolarSystemVC: UIViewController{
     
     // Closure to creater initial constrainst
     
-   lazy var initialPosition: [UIImageView] -> [NSLayoutConstraint] = { planetList in
+   lazy var initialPosition: ([UIImageView]) -> [NSLayoutConstraint] = { planetList in
         var constraints: [NSLayoutConstraint] = []
             for planet in planetList{
-                let planetX = planet.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor)
-                let planetY = planet.centerYAnchor.constraintEqualToAnchor(self.view.centerYAnchor)
-                planetX.active = true
-                planetY.active = true
+                let planetX = planet.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+                let planetY = planet.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+                planetX.isActive = true
+                planetY.isActive = true
                 constraints.append(planetX)
                 constraints.append(planetY)
             }
@@ -44,10 +44,10 @@ class SolarSystemVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .blackColor()
+        view.backgroundColor = .black()
         let layoutGuide:UILayoutGuide = UILayoutGuide()
         
-        let sizeWidth = UIScreen.mainScreen().bounds.width
+        let sizeWidth = UIScreen.main().bounds.width
         let tap = UITapGestureRecognizer(target: self, action: #selector(SolarSystemVC.tapAction(_:) ))
    
         
@@ -66,8 +66,8 @@ class SolarSystemVC: UIViewController{
         view.addGestureRecognizer(tap)
         
    // setupa layoutguide for the center of the screen
-       layoutGuide.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-       layoutGuide.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
+       layoutGuide.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+       layoutGuide.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         
 
@@ -76,31 +76,31 @@ class SolarSystemVC: UIViewController{
         
         
      // create the constraits for the planets position (where they will be when the animation finishes )
-        let expandedMercuryX = mercury.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor, constant: 10)
-        let expandedMercuryY = mercury.widthAnchor.constraintEqualToConstant(40)
+        let expandedMercuryX = mercury.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10)
+        let expandedMercuryY = mercury.widthAnchor.constraint(equalToConstant: 40)
         
 
-        let expandedMarsX = mars.centerXAnchor.constraintEqualToAnchor(layoutGuide.centerXAnchor, constant: -(sizeWidth / 4))
-        let expandedMarsY = mars.topAnchor.constraintEqualToAnchor(mercury.bottomAnchor, constant: -30)
-        let expandedMArsWidth = mars.widthAnchor.constraintEqualToConstant(60)
+        let expandedMarsX = mars.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor, constant: -(sizeWidth / 4))
+        let expandedMarsY = mars.topAnchor.constraint(equalTo: mercury.bottomAnchor, constant: -30)
+        let expandedMArsWidth = mars.widthAnchor.constraint(equalToConstant: 60)
         
         
         
-        let expandedEarthX = earth.leadingAnchor.constraintEqualToAnchor(mars.trailingAnchor, constant: -25)
-        let expandedEarthY = earth.topAnchor.constraintEqualToAnchor(mars.bottomAnchor,constant: -10)
-        let expandedEarthWidth = earth.widthAnchor.constraintEqualToConstant(85)
+        let expandedEarthX = earth.leadingAnchor.constraint(equalTo: mars.trailingAnchor, constant: -25)
+        let expandedEarthY = earth.topAnchor.constraint(equalTo: mars.bottomAnchor,constant: -10)
+        let expandedEarthWidth = earth.widthAnchor.constraint(equalToConstant: 85)
         
         
-        let expandedJupiterX = jupiter.centerXAnchor.constraintEqualToAnchor(layoutGuide.centerXAnchor)
-        let expandedJupiterY = jupiter.centerYAnchor.constraintEqualToAnchor(layoutGuide.centerYAnchor,constant: 30)
+        let expandedJupiterX = jupiter.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor)
+        let expandedJupiterY = jupiter.centerYAnchor.constraint(equalTo: layoutGuide.centerYAnchor,constant: 30)
         
-        let expandedSaturnX = saturn.centerXAnchor.constraintEqualToAnchor(layoutGuide.centerXAnchor, constant: (sizeWidth / 4))
-        let expandedSaturnY = saturn.bottomAnchor.constraintEqualToAnchor(uranus.topAnchor, constant: 20)
+        let expandedSaturnX = saturn.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor, constant: (sizeWidth / 4))
+        let expandedSaturnY = saturn.bottomAnchor.constraint(equalTo: uranus.topAnchor, constant: 20)
       
         
-        let expandedUranusX = uranus.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor, constant: -20)
-        let expandedUranusY = uranus.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor)
-        let expandedUranusWidth = uranus.widthAnchor.constraintEqualToConstant(45)
+        let expandedUranusX = uranus.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        let expandedUranusY = uranus.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        let expandedUranusWidth = uranus.widthAnchor.constraint(equalToConstant: 45)
 
         // place the constraints in an array
         portraitConstraints = [expandedMercuryX,
@@ -131,16 +131,16 @@ class SolarSystemVC: UIViewController{
     
     
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         
          self.view.layoutIfNeeded()
-        coordinator.animateAlongsideTransition({ _ in
+        coordinator.animate(alongsideTransition: { _ in
             
             }, completion: { _ in
-                 UIView.animateWithDuration(1.5, animations: {
-                    NSLayoutConstraint.deactivateConstraints(self.portraitConstraints)
-                    NSLayoutConstraint.activateConstraints(self.initialConstraints)
+                 UIView.animate(withDuration: 1.5, animations: {
+                    NSLayoutConstraint.deactivate(self.portraitConstraints)
+                    NSLayoutConstraint.activate(self.initialConstraints)
                     self.view.layoutIfNeeded()
                   
                  })
@@ -151,22 +151,22 @@ class SolarSystemVC: UIViewController{
     
     
     
-    func tapAction(gesture: UIGestureRecognizer){
+    func tapAction(_ gesture: UIGestureRecognizer){
         // deactive the initial constraints
-        NSLayoutConstraint.deactivateConstraints(self.initialConstraints)
+        NSLayoutConstraint.deactivate(self.initialConstraints)
         
         // activate each new constraint
-        for i in self.portraitConstraints{ i.active = true   }
+        for i in self.portraitConstraints{ i.isActive = true   }
         
-        UIView.animateWithDuration(
-            2.0,
+        UIView.animate(
+            withDuration: 2.0,
             delay: 0.0,
             usingSpringWithDamping: 0.5,
             initialSpringVelocity: 2,
-            options: [ .CurveEaseInOut ],
+            options: UIViewAnimationOptions(),
             animations: {
                // add and animate the new constraints
-                NSLayoutConstraint.activateConstraints(self.portraitConstraints)
+                NSLayoutConstraint.activate(self.portraitConstraints)
                 self.view.layoutIfNeeded()
             },
             completion: nil
