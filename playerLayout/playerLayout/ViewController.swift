@@ -11,8 +11,8 @@ import UIKit
 class PlayerViewController: UIViewController {
     
     var mainStack: UIStackView = UIStackView()
-    var screenHeight: CGFloat { return UIScreen.mainScreen().bounds.height}
-    var screenWidth: CGFloat {return UIScreen.mainScreen().bounds.width}
+    var screenHeight: CGFloat { return UIScreen.main().bounds.height}
+    var screenWidth: CGFloat {return UIScreen.main().bounds.width}
     // MARK:- View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +29,12 @@ class PlayerViewController: UIViewController {
     }
     
     
-    private func makeButtonWithTitle(title: String,  fontSize: Int) -> UIButton {
-        let button = UIButton(type: .System)
-        button.backgroundColor = .redColor()
-        button.tintColor = .blackColor()
-        button.setTitle(title, forState: .Normal)
-        button.titleLabel?.font = .boldSystemFontOfSize(CGFloat(fontSize))
+    private func makeButtonWithTitle(_ title: String,  fontSize: Int) -> UIButton {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .red()
+        button.tintColor = .black()
+        button.setTitle(title, for: UIControlState())
+        button.titleLabel?.font = .boldSystemFont(ofSize: CGFloat(fontSize))
         return button
     }
     
@@ -47,7 +47,7 @@ class PlayerViewController: UIViewController {
         // The Album Cover Art ImageView
         
         let albumPic = UIImageView(image: UIImage(named: "hail")!)
-        albumPic.contentMode = .ScaleAspectFill
+        albumPic.contentMode = .scaleAspectFill
         albumPic.clipsToBounds = true
         // make the album art stay above the controlls during rotation animation
         albumPic.layer.zPosition  = 1.0
@@ -60,33 +60,33 @@ class PlayerViewController: UIViewController {
         
         let at = UITextView()
         at.text = "0:34"
-        at.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption2)
-        at.backgroundColor = .redColor()
-        at.textAlignment = .Left
-        at.editable = false
+        at.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleCaption2)
+        at.backgroundColor = .red()
+        at.textAlignment = .left
+        at.isEditable = false
 
         
         let trackTime = UITextView()
         trackTime.text = "-3:19"
-        trackTime.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption2)
-        trackTime.backgroundColor = .redColor()
-        trackTime.textAlignment = .Right
-        trackTime.editable = false
+        trackTime.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleCaption2)
+        trackTime.backgroundColor = .red()
+        trackTime.textAlignment = .right
+        trackTime.isEditable = false
 
 
         let leftDummyView = UIView()
-        leftDummyView.backgroundColor = .redColor()
+        leftDummyView.backgroundColor = .red()
 
         let rightDummyView = UIView()
-         rightDummyView.backgroundColor = .redColor()
+         rightDummyView.backgroundColor = .red()
 
         
         let timeStack = UIStackView(arrangedSubviews: [leftDummyView, at ,trackTime, rightDummyView ])
         
        
-        leftDummyView.widthAnchor.constraintEqualToConstant(20).active = true
-        rightDummyView.widthAnchor.constraintEqualToConstant(20).active = true
-        at.widthAnchor.constraintEqualToAnchor(trackTime.widthAnchor).active = true
+        leftDummyView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        rightDummyView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        at.widthAnchor.constraint(equalTo: trackTime.widthAnchor).isActive = true
         
         
         
@@ -101,13 +101,13 @@ class PlayerViewController: UIViewController {
         let trackList = makeButtonWithTitle("⚡︎", fontSize: 20)
         
         let playerStack = UIStackView(arrangedSubviews: [love, back, play, forward, trackList])
-        playerStack.distribution = .Fill
+        playerStack.distribution = .fill
 
         
-        play.widthAnchor.constraintEqualToAnchor(back.widthAnchor, multiplier: 2.0, constant: 1.0).active = true
-        back.widthAnchor.constraintEqualToAnchor(forward.widthAnchor).active = true
-        love.widthAnchor.constraintEqualToAnchor(back.widthAnchor).active = true
-        trackList.widthAnchor.constraintEqualToAnchor(back.widthAnchor).active = true
+        play.widthAnchor.constraint(equalTo: back.widthAnchor, multiplier: 2.0, constant: 1.0).isActive = true
+        back.widthAnchor.constraint(equalTo: forward.widthAnchor).isActive = true
+        love.widthAnchor.constraint(equalTo: back.widthAnchor).isActive = true
+        trackList.widthAnchor.constraint(equalTo: back.widthAnchor).isActive = true
       
          /* ---------------------------------------------------------------------------*/
         // Vertical StackView holding the Album Title and track title
@@ -115,23 +115,23 @@ class PlayerViewController: UIViewController {
         
         let albumTitle = UITextView()
         albumTitle.text = "Hail to the Thief"
-        albumTitle.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        albumTitle.backgroundColor = .redColor()
-        albumTitle.textAlignment = .Center
-        albumTitle.editable = false
+        albumTitle.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleHeadline)
+        albumTitle.backgroundColor = .red()
+        albumTitle.textAlignment = .center
+        albumTitle.isEditable = false
 
         
         let trackTitle = UITextView()
         trackTitle.text = "2+2 = 5"
-        trackTitle.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
-        trackTitle.backgroundColor = .redColor()
-        trackTitle.textAlignment = .Center
-        trackTitle.editable = false
+        trackTitle.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleFootnote)
+        trackTitle.backgroundColor = .red()
+        trackTitle.textAlignment = .center
+        trackTitle.isEditable = false
         
         
         let titlesStack = UIStackView(arrangedSubviews: [ albumTitle, trackTitle ])
-        titlesStack.axis = .Vertical
-        titlesStack.distribution = UIStackViewDistribution.FillEqually
+        titlesStack.axis = .vertical
+        titlesStack.distribution = UIStackViewDistribution.fillEqually
     
   /* ---------------------------------------------------------------------------*/
         // Horizontal stackView holding the Bottom buttons
@@ -142,11 +142,11 @@ class PlayerViewController: UIViewController {
     
         
         let footerStack = UIStackView(arrangedSubviews: [exit, snooze, speed])
-        footerStack.distribution = .Fill
+        footerStack.distribution = .fill
 
         
-        snooze.widthAnchor.constraintEqualToAnchor(exit.widthAnchor, multiplier: 2.0, constant: 1.0).active = true
-        speed.widthAnchor.constraintEqualToAnchor(exit.widthAnchor).active = true
+        snooze.widthAnchor.constraint(equalTo: exit.widthAnchor, multiplier: 2.0, constant: 1.0).isActive = true
+        speed.widthAnchor.constraint(equalTo: exit.widthAnchor).isActive = true
 
         
         
@@ -157,29 +157,29 @@ class PlayerViewController: UIViewController {
         let sliderDemo = UISlider()
         sliderDemo.minimumValue = 0
         sliderDemo.maximumValue = 50
-        sliderDemo.continuous = true
-        sliderDemo.tintColor = .blackColor()
+        sliderDemo.isContinuous = true
+        sliderDemo.tintColor = .black()
         sliderDemo.value = 40
-        sliderDemo.contentMode = .ScaleAspectFill
+        sliderDemo.contentMode = .scaleAspectFill
         sliderDemo.clipsToBounds = true
-        sliderDemo.backgroundColor = .redColor()
-        sliderDemo.maximumTrackTintColor = .redColor()
-        sliderDemo.thumbTintColor = .blackColor()
+        sliderDemo.backgroundColor = .red()
+        sliderDemo.maximumTrackTintColor = .red()
+        sliderDemo.thumbTintColor = .black()
        
         
         let leftSliderDummyView = UIView()
-        leftSliderDummyView.backgroundColor = .redColor()
+        leftSliderDummyView.backgroundColor = .red()
         
         let rightSliderDummyView = UIView()
-        rightSliderDummyView.backgroundColor = .redColor()
+        rightSliderDummyView.backgroundColor = .red()
 
   
         let sliderStack = UIStackView(arrangedSubviews: [ leftSliderDummyView, sliderDemo, rightSliderDummyView])
-        sliderStack.axis = .Horizontal
+        sliderStack.axis = .horizontal
 
 
-        leftSliderDummyView.widthAnchor.constraintEqualToConstant(40).active = true
-        rightSliderDummyView.widthAnchor.constraintEqualToConstant(40).active = true
+        leftSliderDummyView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        rightSliderDummyView.widthAnchor.constraint(equalToConstant: 40).isActive = true
 
         
         /* ---------------------------------------------------------------------------*/
@@ -187,8 +187,8 @@ class PlayerViewController: UIViewController {
         // Vertical StackView with ALL the previous controlls stacks
         
          let controlls = UIStackView(arrangedSubviews: [ timeStack,  titlesStack, playerStack, sliderStack ,footerStack ])
-         controlls.axis = .Vertical
-         controlls.distribution = UIStackViewDistribution.FillEqually
+         controlls.axis = .vertical
+         controlls.distribution = UIStackViewDistribution.fillEqually
 
         
     
@@ -197,9 +197,9 @@ class PlayerViewController: UIViewController {
         //Vertical StackView with the Album Picture and the stackView of Controls
         
         mainStack = UIStackView(arrangedSubviews: [ albumPic, controlls ])
-        mainStack.axis = .Vertical
+        mainStack.axis = .vertical
         mainStack.spacing = 2
-        mainStack.distribution = UIStackViewDistribution.FillEqually
+        mainStack.distribution = UIStackViewDistribution.fillEqually
         mainStack.translatesAutoresizingMaskIntoConstraints = false
 
         
@@ -210,14 +210,14 @@ class PlayerViewController: UIViewController {
     
     
     // MARK:- Handle Device Rotation
-    override func viewWillTransitionToSize( size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator){
-        super.viewWillTransitionToSize(size , withTransitionCoordinator: coordinator)
+    override func viewWillTransition( to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator){
+        super.viewWillTransition(to: size , with: coordinator)
     
-        coordinator.animateAlongsideTransition({
+        coordinator.animate(alongsideTransition: {
             context in
             
-                if size.width > size.height { self.mainStack.axis = .Horizontal   }
-                else {   self.mainStack.axis = .Vertical  }
+                if size.width > size.height { self.mainStack.axis = .horizontal   }
+                else {   self.mainStack.axis = .vertical  }
   
             }, completion: nil        )
     }
@@ -231,10 +231,10 @@ class PlayerViewController: UIViewController {
         
         let margins = view.layoutMarginsGuide
         
-        mainStack.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor,constant: -20 ).active = true
-        mainStack.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor, constant: 20).active = true
-        mainStack.topAnchor.constraintEqualToAnchor(margins.topAnchor,constant: 0).active = true
-        mainStack.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor).active = true
+        mainStack.leadingAnchor.constraint(equalTo: margins.leadingAnchor,constant: -20 ).isActive = true
+        mainStack.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 20).isActive = true
+        mainStack.topAnchor.constraint(equalTo: margins.topAnchor,constant: 0).isActive = true
+        mainStack.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
 
         super.updateViewConstraints()
     }
@@ -243,7 +243,7 @@ class PlayerViewController: UIViewController {
     //MARK:- Status bar preferences
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+        return .lightContent
     }
     
 }// END
