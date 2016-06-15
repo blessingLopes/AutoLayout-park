@@ -19,29 +19,29 @@ class CalculatorViewController: UIViewController {
     //MARK:- Convenience Closures 
     
     // Closures to build buttons
-    private  var createButtonWithText:String -> UIButton = { name   in
+    private  var createButtonWithText:(String) -> UIButton = { name   in
         
         // NOTE:- WorkAround To prevent the button's text from disapearing when the rotation from lanscape to Portrait begins:
         //  - Create a .Custom type uibutton
         //  - Replace the text with a UIimage. The image will stay on at all times.
-        let button   = UIButton(type: .Custom)
+        let button   = UIButton(type: .custom)
         //  button.setImage(image, forState: .Normal)
 
         button.titleLabel?.font = UIFont(name: "HelveticaNeue-Thin", size: 20)
-        button.setTitle(name, forState: .Normal)
-        button.backgroundColor = .lightGrayColor()
-        button.tintColor = UIColor.whiteColor()
+        button.setTitle(name, for: [])
+        button.backgroundColor = .lightGray()
+        button.tintColor = UIColor.white()
         return button
     }
     
     
-    private  var createAdvButtonWithText:String -> UIButton = { name   in
+    private  var createAdvButtonWithText:(String) -> UIButton = { name   in
         
-        let button   = UIButton(type: .System)
+        let button   = UIButton(type: .system)
         button.titleLabel?.font = UIFont(name: "HelveticaNeue-Thin", size: 15)
-        button.setTitle(name, forState: .Normal)
+        button.setTitle(name, for: [ ])
         button.backgroundColor = UIColor(white: 0.5, alpha: 1.0)
-        button.tintColor = .whiteColor()
+        button.tintColor = .white()
         return button
     }
     
@@ -50,7 +50,7 @@ class CalculatorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .darkGrayColor()
+        view.backgroundColor = .darkGray()
         buildSimpleCalc()
         view.addSubview(simpleCalcStack ?? UIStackView())
         
@@ -58,17 +58,17 @@ class CalculatorViewController: UIViewController {
     }
     
     // MARK:- Handle Device Rotation
-    override func viewWillTransitionToSize( size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator){
-        super.viewWillTransitionToSize(size , withTransitionCoordinator: coordinator)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator){
+        super.viewWillTransition(to: size , with: coordinator)
         
-        coordinator.animateAlongsideTransition({
+        coordinator.animate(alongsideTransition: {
             context in
             
             if size.width > size.height {
-                self.simpleCalcStack?.arrangedSubviews[0].hidden = false
+                self.simpleCalcStack?.arrangedSubviews[0].isHidden = false
             }
             else {
-                 self.simpleCalcStack?.arrangedSubviews[0].hidden = true
+                 self.simpleCalcStack?.arrangedSubviews[0].isHidden = true
             }
             
             }, completion: nil)
@@ -83,7 +83,7 @@ class CalculatorViewController: UIViewController {
   // MARK:- Build and layout the simple calculator
     private func  buildSimpleCalc(){
     
-        let sizeHeight = UIScreen.mainScreen().bounds.height
+        let sizeHeight = UIScreen.main().bounds.height
    
         
         let zeroButton  = createButtonWithText("0")
@@ -110,62 +110,62 @@ class CalculatorViewController: UIViewController {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.text = "24"
         textView.font = UIFont(name: "HelveticaNeue-Thin", size: 60)
-        textView.textColor = .whiteColor()
-        textView.textAlignment = .Right
+        textView.textColor = .white()
+        textView.textAlignment = .right
         
         let textHostView = UIView(frame: .zero)
-        textHostView.backgroundColor = .darkGrayColor()
+        textHostView.backgroundColor = .darkGray()
         textHostView.translatesAutoresizingMaskIntoConstraints = false
         textHostView.addSubview(textView)
 
         
-       textView.bottomAnchor.constraintEqualToAnchor(textHostView.bottomAnchor, constant: -5).active = true
-       textView.centerXAnchor.constraintEqualToAnchor(textHostView.centerXAnchor).active = true
+       textView.bottomAnchor.constraint(equalTo: textHostView.bottomAnchor, constant: -5).isActive = true
+       textView.centerXAnchor.constraint(equalTo: textHostView.centerXAnchor).isActive = true
      
         
         let firstRow = UIStackView(arrangedSubviews: [equalButton, dotButton, zeroButton ])
-        firstRow.distribution = .FillProportionally
+        firstRow.distribution = .fillProportionally
         firstRow.spacing = 0.5
         
-        zeroButton.widthAnchor.constraintEqualToAnchor(dotButton.widthAnchor, multiplier: 2.0, constant: 0.5).active = true
-        dotButton.widthAnchor.constraintEqualToAnchor(equalButton.widthAnchor).active = true
+        zeroButton.widthAnchor.constraint(equalTo: dotButton.widthAnchor, multiplier: 2.0, constant: 0.5).isActive = true
+        dotButton.widthAnchor.constraint(equalTo: equalButton.widthAnchor).isActive = true
         
         let secondRow = UIStackView(arrangedSubviews: [ plusButton, threeButton, twoButton, oneButton ])
-        secondRow.distribution = .FillEqually
+        secondRow.distribution = .fillEqually
         secondRow.spacing = 0.5
         
         let thirdRow = UIStackView(arrangedSubviews: [minusButton, sixButton, fiveButton, fourButton ])
-        thirdRow.distribution = .FillEqually
+        thirdRow.distribution = .fillEqually
         thirdRow.spacing = 0.5
         
         let fourthRow = UIStackView(arrangedSubviews: [timesButton, nineButton, eighyButton, sevenButton ])
-        fourthRow.distribution = .FillEqually
+        fourthRow.distribution = .fillEqually
         fourthRow.spacing = 0.5
         
         let fifthRow = UIStackView(arrangedSubviews: [divideButton, closeParenthesesButton, openParenthesesButton, tanButton ])
-        fifthRow.distribution = .FillEqually
+        fifthRow.distribution = .fillEqually
         fifthRow.spacing = 0.5
         
         let buttonStackView = UIStackView(arrangedSubviews: [fifthRow, fourthRow, thirdRow, secondRow, firstRow])
-        buttonStackView.axis = .Vertical
-        buttonStackView.distribution = .FillEqually
+        buttonStackView.axis = .vertical
+        buttonStackView.distribution = .fillEqually
         buttonStackView.spacing = 0.5
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
 
         
         let simpleCalc = UIStackView(arrangedSubviews: [textHostView, buttonStackView])
-        simpleCalc.axis = .Vertical
+        simpleCalc.axis = .vertical
         simpleCalc.spacing = 0.5
 
        
         simpleCalcStack = UIStackView(arrangedSubviews: [ buildAdvancedCalcStack() , simpleCalc])
-        simpleCalcStack?.axis = .Horizontal
+        simpleCalcStack?.axis = .horizontal
         simpleCalcStack?.spacing = 0.5
-        simpleCalcStack?.distribution = .FillEqually
-        simpleCalcStack?.arrangedSubviews[0].hidden = true
+        simpleCalcStack?.distribution = .fillEqually
+        simpleCalcStack?.arrangedSubviews[0].isHidden = true
 
 
-        textHostView.heightAnchor.constraintEqualToConstant(sizeHeight / 4).active = true
+        textHostView.heightAnchor.constraint(equalToConstant: sizeHeight / 4).isActive = true
         
         
     }
@@ -173,7 +173,7 @@ class CalculatorViewController: UIViewController {
       // MARK:- Build and layout the Advanced calculator
     private func buildAdvancedCalcStack() -> UIStackView{
     
-        let sizeHeight = UIScreen.mainScreen().bounds.height
+        let sizeHeight = UIScreen.main().bounds.height
     
         let dotButton   = createAdvButtonWithText("sinh")
         let equalButton = createAdvButtonWithText("cosh")
@@ -202,45 +202,45 @@ class CalculatorViewController: UIViewController {
 
         
         let textHostView = UIView(frame: .zero)
-        textHostView.backgroundColor = .darkGrayColor()
+        textHostView.backgroundColor = .darkGray()
         textHostView.translatesAutoresizingMaskIntoConstraints = false
 
         
         let firstRow = UIStackView(arrangedSubviews: [equalButton, dotButton ])
-        firstRow.distribution = .FillEqually
+        firstRow.distribution = .fillEqually
         firstRow.spacing = 0.5
         
-        dotButton.widthAnchor.constraintEqualToAnchor(equalButton.widthAnchor).active = true
+        dotButton.widthAnchor.constraint(equalTo: equalButton.widthAnchor).isActive = true
         
         let secondRow = UIStackView(arrangedSubviews: [ plusButton, threeButton, twoButton, oneButton, symbol ])
-        secondRow.distribution = .FillEqually
+        secondRow.distribution = .fillEqually
         secondRow.spacing = 0.5
         
         let thirdRow = UIStackView(arrangedSubviews: [minusButton, sixButton, fiveButton, fourButton, symbol2 ])
-        thirdRow.distribution = .FillEqually
+        thirdRow.distribution = .fillEqually
         thirdRow.spacing = 0.5
         
         let fourthRow = UIStackView(arrangedSubviews: [timesButton, nineButton, eighyButton, sevenButton, symbol3 ])
-        fourthRow.distribution = .FillEqually
+        fourthRow.distribution = .fillEqually
         fourthRow.spacing = 0.5
         
         let fifthRow = UIStackView(arrangedSubviews: [divideButton, closeParenthesesButton, openParenthesesButton, tanButton, symbol4 ])
-        fifthRow.distribution = .FillEqually
+        fifthRow.distribution = .fillEqually
         fifthRow.spacing = 0.5
 
         
         let buttonStackView = UIStackView(arrangedSubviews: [fifthRow, fourthRow, thirdRow, secondRow, firstRow])
-        buttonStackView.axis = .Vertical
-        buttonStackView.distribution = .FillEqually
+        buttonStackView.axis = .vertical
+        buttonStackView.distribution = .fillEqually
         buttonStackView.spacing = 0.5
 
         
         
         let advancedCalc = UIStackView(arrangedSubviews: [textHostView, buttonStackView])
-        advancedCalc.axis = .Vertical
+        advancedCalc.axis = .vertical
         advancedCalc.spacing = 0.5
 
-        textHostView.heightAnchor.constraintEqualToConstant(sizeHeight / 4).active = true
+        textHostView.heightAnchor.constraint(equalToConstant: sizeHeight / 4).isActive = true
         
         return advancedCalc
     }
