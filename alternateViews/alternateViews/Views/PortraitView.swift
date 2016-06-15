@@ -24,13 +24,13 @@ required init?(coder aDecoder: NSCoder) {
 }
 
 convenience init() {
-    self.init(frame: CGRectZero)
+    self.init(frame: CGRect.zero)
 }
 
 func setup() {
     
     let margins  = self.layoutMarginsGuide
-    backgroundColor = .whiteColor()
+    backgroundColor = .white()
     
     let title = setupTitle()
     let profileView = setUpProfilePic()
@@ -45,58 +45,58 @@ func setup() {
     addSubview(back)
     
     // Center title horizontally
-    let constraintsLabel_H = NSLayoutConstraint.constraintsWithVisualFormat(
-        "V:[superview]-(<=1)-[label]",
-        options: .AlignAllCenterX,
+    let constraintsLabel_H = NSLayoutConstraint.constraints(
+        withVisualFormat: "V:[superview]-(<=1)-[label]",
+        options: .alignAllCenterX,
         metrics: nil,
         views: ["superview": self, "label":title])
     
     
     
     // center title vertically
-    let  constraintsLabel_V = NSLayoutConstraint.constraintsWithVisualFormat(
-        "H:[superview]-(<=1)-[label]",
-        options: .AlignAllCenterY,
+    let  constraintsLabel_V = NSLayoutConstraint.constraints(
+        withVisualFormat: "H:[superview]-(<=1)-[label]",
+        options: .alignAllCenterY,
         metrics: nil,
         views: ["superview":self, "label":title])
     
-    NSLayoutConstraint.activateConstraints(constraintsLabel_H)
-    NSLayoutConstraint.activateConstraints(constraintsLabel_V)
+    NSLayoutConstraint.activate(constraintsLabel_H)
+    NSLayoutConstraint.activate(constraintsLabel_V)
     
     
     //  -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   //
 
     // Center profilePic horizontally
-    let constraintsPicture_H = NSLayoutConstraint.constraintsWithVisualFormat(
-        "V:[superview]-(<=1)-[image]",
-        options: .AlignAllCenterX,
+    let constraintsPicture_H = NSLayoutConstraint.constraints(
+        withVisualFormat: "V:[superview]-(<=1)-[image]",
+        options: .alignAllCenterX,
         metrics: nil,
         views: ["superview": self, "image":profileView])
     
-    NSLayoutConstraint.activateConstraints(constraintsPicture_H)
+    NSLayoutConstraint.activate(constraintsPicture_H)
     
     // position profilePic verticaly
 
-    profileView.topAnchor.constraintEqualToAnchor(margins.topAnchor,constant: 100).active = true
-    profileView.bottomAnchor.constraintEqualToAnchor(title.topAnchor,constant: -20).active = true
+    profileView.topAnchor.constraint(equalTo: margins.topAnchor,constant: 100).isActive = true
+    profileView.bottomAnchor.constraint(equalTo: title.topAnchor,constant: -20).isActive = true
     
     //  -   -   -   -   -   -   -   -   -   -   -   -   -   -    -   -   //
     
     // Center description horizontally
-    let constraintsDescription_H = NSLayoutConstraint.constraintsWithVisualFormat(
-        "V:[superview]-(<=1)-[desc]",
-        options: .AlignAllCenterX,
+    let constraintsDescription_H = NSLayoutConstraint.constraints(
+        withVisualFormat: "V:[superview]-(<=1)-[desc]",
+        options: .alignAllCenterX,
         metrics: nil,
         views: ["superview": self, "desc": desc])
     
-    NSLayoutConstraint.activateConstraints(constraintsDescription_H)
+    NSLayoutConstraint.activate(constraintsDescription_H)
     
     // position description verticaly
     
-    desc.topAnchor.constraintEqualToAnchor(title.bottomAnchor,constant: 10).active = true
-    desc.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor, constant: -90).active = true
-    desc.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor, constant: 30).active = true
-    desc.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor, constant: -30).active = true
+    desc.topAnchor.constraint(equalTo: title.bottomAnchor,constant: 10).isActive = true
+    desc.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: -90).isActive = true
+    desc.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 30).isActive = true
+    desc.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -30).isActive = true
 
     
     //  -   -   -   -   -   -   -   -   -   -   -   -   -   -    -   -   //
@@ -107,11 +107,11 @@ func setup() {
     
     //position Buttons
     
-    plus.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor, constant: -30).active  = true
-    plus.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor, constant: -20).active = true
+    plus.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: -30).isActive  = true
+    plus.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -20).isActive = true
     
-    back.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor, constant: -30).active  = true
-    back.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor, constant: 20).active = true
+    back.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: -30).isActive  = true
+    back.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20).isActive = true
 
     
 }
@@ -121,11 +121,11 @@ func setup() {
     private func setupTitle()  -> UILabel{
         let lab = UILabel()
         lab.text = "Mr. Fantastic Fox"
-        lab.font = UIFont.systemFontOfSize(40)
+        lab.font = UIFont.systemFont(ofSize: 40)
         lab.translatesAutoresizingMaskIntoConstraints = false
         lab.layer.cornerRadius = 10
         lab.clipsToBounds = true
-        lab.layer.shadowColor = UIColor.blackColor().CGColor
+        lab.layer.shadowColor = UIColor.black().cgColor
         lab.layer.shadowOffset = CGSize(width: 1, height: 1)
         lab.layer.shadowOpacity = 0.2
         lab.layer.shadowRadius = 0.1
@@ -136,7 +136,7 @@ func setup() {
     private func setUpProfilePic() -> UIImageView{
         let pic = UIImageView(image: UIImage(named: "me"))
         pic.translatesAutoresizingMaskIntoConstraints = false
-        pic.contentMode = .ScaleAspectFit
+        pic.contentMode = .scaleAspectFit
 
         return pic
     }
@@ -145,9 +145,9 @@ func setup() {
     private func setUpDescription() -> UILabel{
         let desc = UILabel()
         desc.text = "Mr. Fox, now a newspaper columnist, moves the family into a better home in the base of a tree, ignoring the warnings of his lawyer Badger about how dangerous the area is for foxes."
-        desc.textAlignment = .Center
+        desc.textAlignment = .center
         desc.numberOfLines = 0
-        desc.font = UIFont.systemFontOfSize(14)
+        desc.font = UIFont.systemFont(ofSize: 14)
         desc.translatesAutoresizingMaskIntoConstraints = false
 
         return desc
@@ -156,12 +156,12 @@ func setup() {
     
     
     
-    private func makeButtonWithTitle(title: String,  fontSize: Int) -> UIButton {
-        let button = UIButton(type: .System)
+    private func makeButtonWithTitle(_ title: String,  fontSize: Int) -> UIButton {
+        let button = UIButton(type: .system)
         
-        button.tintColor = .redColor()
-        button.setTitle(title, forState: .Normal)
-        button.titleLabel?.font = .boldSystemFontOfSize(CGFloat(fontSize))
+        button.tintColor = .red()
+        button.setTitle(title, for: UIControlState())
+        button.titleLabel?.font = .boldSystemFont(ofSize: CGFloat(fontSize))
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }

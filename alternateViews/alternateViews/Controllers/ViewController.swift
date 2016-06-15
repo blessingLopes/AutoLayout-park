@@ -11,8 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     
-    let port = PortraitView(frame: UIScreen.mainScreen().bounds)
-    let land = LandscapeView(frame: UIScreen.mainScreen().bounds)
+    let port = PortraitView(frame: UIScreen.main().bounds)
+    let land = LandscapeView(frame: UIScreen.main().bounds)
     
     
     
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         view.addSubview(port)
@@ -43,29 +43,29 @@ class ViewController: UIViewController {
 
     
     // MARK:- Handle Device Rotation
-    override func viewWillTransitionToSize( size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator){
-        super.viewWillTransitionToSize(size , withTransitionCoordinator: coordinator)
+    override func viewWillTransition( to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator){
+        super.viewWillTransition(to: size , with: coordinator)
         
         let viewForCurrentOrientation = size.width > size.height ? port : land 
         let viewForFinal = size.width > size.height ? land  : port
         
-        let snapshot = viewForCurrentOrientation.snapshotViewAfterScreenUpdates(false)
-        snapshot.frame = viewForCurrentOrientation.frame;
-        snapshot.autoresizingMask = [.FlexibleWidth , .FlexibleHeight]
+        let snapshot = viewForCurrentOrientation.snapshotView(afterScreenUpdates: false)
+        snapshot?.frame = viewForCurrentOrientation.frame;
+        snapshot?.autoresizingMask = [.flexibleWidth , .flexibleHeight]
         
-        view.insertSubview(snapshot, aboveSubview: viewForCurrentOrientation)
+        view.insertSubview(snapshot!, aboveSubview: viewForCurrentOrientation)
         viewForFinal.alpha = 0
 
-        coordinator.animateAlongsideTransition({
+        coordinator.animate(alongsideTransition: {
             context in
             
-             snapshot.alpha = 0.0
+             snapshot?.alpha = 0.0
              viewForFinal.alpha = 1.0
              viewForCurrentOrientation.alpha = 0
             
             }, completion: { _ in
                 
-                snapshot.removeFromSuperview()
+                snapshot?.removeFromSuperview()
                 
         }  )
 

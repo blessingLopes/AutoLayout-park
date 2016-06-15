@@ -25,7 +25,7 @@ class LandscapeView: UIView{
     }
     
     convenience init() {
-        self.init(frame: CGRectZero)
+        self.init(frame: CGRect.zero)
   
     }
     
@@ -34,7 +34,7 @@ class LandscapeView: UIView{
     
    private func setup() {
         let margins = self.layoutMarginsGuide
-        backgroundColor = .whiteColor()
+        backgroundColor = .white()
 
         let title: UILabel = setupTitle()
         let pic = setUpProfilePic()
@@ -50,50 +50,50 @@ class LandscapeView: UIView{
     //-  -  -  -  -   -     -   -   -   -   -    -   -   -    -   -   -   -   -//
         
         // Center title horizontally
-        let constraintsLabel_H = NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:[superview]-(<=1)-[title]",
-            options: .AlignAllCenterX,
+        let constraintsLabel_H = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:[superview]-(<=1)-[title]",
+            options: .alignAllCenterX,
             metrics: nil,
             views: ["superview": self, "title":title])
         
         
         
         // center title vertically
-        let  constraintsLabel_V = NSLayoutConstraint.constraintsWithVisualFormat(
-            "H:[superview]-(<=1)-[title]",
-            options: .AlignAllCenterY,
+        let  constraintsLabel_V = NSLayoutConstraint.constraints(
+            withVisualFormat: "H:[superview]-(<=1)-[title]",
+            options: .alignAllCenterY,
             metrics: nil,
             views: ["superview":self, "title":title])
         
-        NSLayoutConstraint.activateConstraints(constraintsLabel_H)
-        NSLayoutConstraint.activateConstraints(constraintsLabel_V)
+        NSLayoutConstraint.activate(constraintsLabel_H)
+        NSLayoutConstraint.activate(constraintsLabel_V)
         
         
    //-  -  -  -  -   -     -   -   -   -   -    -   -   -    -   -   -   -   -//
         // Center profilePic horizontally
-        let constraintsPicture_H = NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:[superview]-(<=1)-[image]",
-            options: .AlignAllCenterX,
+        let constraintsPicture_H = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:[superview]-(<=1)-[image]",
+            options: .alignAllCenterX,
             metrics: nil,
             views: ["superview": self, "image":pic])
         
-        NSLayoutConstraint.activateConstraints(constraintsPicture_H)
+        NSLayoutConstraint.activate(constraintsPicture_H)
 
         
         //position pic Vertically
-        pic.topAnchor.constraintEqualToAnchor(title.bottomAnchor,constant: 10).active = true
-        pic.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor, constant: -50).active = true
+        pic.topAnchor.constraint(equalTo: title.bottomAnchor,constant: 10).isActive = true
+        pic.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: -50).isActive = true
 
         
     //-  -  -  -  -   -     -   -   -   -   -    -   -   -    -   -   -   -   -//
         
         //position Buttons
         
-        plus.topAnchor.constraintEqualToAnchor(margins.topAnchor, constant: 20).active  = true
-        plus.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor, constant: -20).active = true
+        plus.topAnchor.constraint(equalTo: margins.topAnchor, constant: 20).isActive  = true
+        plus.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -20).isActive = true
         
-        back.topAnchor.constraintEqualToAnchor(margins.topAnchor, constant: 20).active  = true
-        back.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor, constant: 20).active = true
+        back.topAnchor.constraint(equalTo: margins.topAnchor, constant: 20).isActive  = true
+        back.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20).isActive = true
         
         
 
@@ -102,8 +102,8 @@ class LandscapeView: UIView{
     
     
 // equivalent to viweWillAppear()
-    override func willMoveToSuperview(newSuperview: UIView?) {
-        super.willMoveToSuperview(newSuperview)
+    override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
         // nothing here for now
     }
 
@@ -117,26 +117,26 @@ class LandscapeView: UIView{
     private func setUpProfilePic() -> UIImageView{
         let pic = UIImageView(image: UIImage(named: "me"))
         pic.translatesAutoresizingMaskIntoConstraints = false
-        pic.contentMode = .ScaleAspectFit
+        pic.contentMode = .scaleAspectFit
         return pic
     }
  
     private func setupTitle()  -> UILabel{
         let lab = UILabel()
         lab.text = "Mr. Fox in Landscape"
-        lab.font = UIFont.systemFontOfSize(60)
+        lab.font = UIFont.systemFont(ofSize: 60)
         lab.translatesAutoresizingMaskIntoConstraints = false
         return lab
         
     }
     
     
-    private func makeButtonWithTitle(title: String,  fontSize: Int) -> UIButton {
-        let button = UIButton(type: .System)
+    private func makeButtonWithTitle(_ title: String,  fontSize: Int) -> UIButton {
+        let button = UIButton(type: .system)
 
-        button.tintColor = .redColor()
-        button.setTitle(title, forState: .Normal)
-        button.titleLabel?.font = .boldSystemFontOfSize(CGFloat(fontSize))
+        button.tintColor = .red()
+        button.setTitle(title, for: UIControlState())
+        button.titleLabel?.font = .boldSystemFont(ofSize: CGFloat(fontSize))
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }

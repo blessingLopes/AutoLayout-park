@@ -142,7 +142,7 @@ class SolarSystemVC: UIViewController{
                     NSLayoutConstraint.deactivateConstraints(self.portraitConstraints)
                     NSLayoutConstraint.activateConstraints(self.initialConstraints)
                     self.view.layoutIfNeeded()
-                 
+                  
                  })
                
         })
