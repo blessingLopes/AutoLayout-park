@@ -109,8 +109,8 @@
 				TargetAttributes = {
 					640CE6771CE4E0D2008EA902 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = X4WRR7YD46;
-						DevelopmentTeamName = "manuel lopes (Personal Team)";
+						DevelopmentTeam = AHT5EPN339;
+						DevelopmentTeamName = "Blessing Itesurobo (Personal Team)";
 						LastSwiftMigration = 0800;
 					};
 				};
