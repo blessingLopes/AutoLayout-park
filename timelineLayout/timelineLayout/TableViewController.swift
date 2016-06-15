@@ -54,27 +54,27 @@ class TableViewContoller: UITableViewController {
     
     //MARK:- tableview dataSource Methods
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView( tableView: UITableView,	numberOfRowsInSection section: Int) -> Int{
+    override func tableView( _ tableView: UITableView,	numberOfRowsInSection section: Int) -> Int{
         return dataSource.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
     
         // please register BEFORE it's  dequeued
-        guard let cell  = tableView.dequeueReusableCellWithIdentifier(TableViewCell.reuseIdentifier, forIndexPath: indexPath) as? TableViewCell else{ fatalError("Unable to dequeue a SelfSizingTableViewCell.") }
+        guard let cell  = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseIdentifier, for: indexPath) as? TableViewCell else{ fatalError("Unable to dequeue a SelfSizingTableViewCell.") }
         
 //        cell.accessoryType = .DisclosureIndicator
 
         // provide the string from the data source
-        cell.body.text = dataSource[indexPath.item]
-        cell.name.text = "Cell title n. \(indexPath.item)"
-        cell.time.text = "\(indexPath.item) m"
-        cell.avatar.image = UIImage(named: "\(indexPath.item)")
-        cell.userInteractionEnabled = false
+        cell.body.text = dataSource[(indexPath as NSIndexPath).item]
+        cell.name.text = "Cell title n. \((indexPath as NSIndexPath).item)"
+        cell.time.text = "\((indexPath as NSIndexPath).item) m"
+        cell.avatar.image = UIImage(named: "\((indexPath as NSIndexPath).item)")
+        cell.isUserInteractionEnabled = false
         return cell
         
     }
@@ -84,7 +84,7 @@ class TableViewContoller: UITableViewController {
     
     private func setupTableView(){
         //register the table view cell class
-        tableView.registerClass( TableViewCell.self, forCellReuseIdentifier: TableViewCell.reuseIdentifier)
+        tableView.register( TableViewCell.self, forCellReuseIdentifier: TableViewCell.reuseIdentifier)
         
         // set up data source and delegate
         tableView.dataSource = self
@@ -96,8 +96,8 @@ class TableViewContoller: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         
         //Table view config
-        tableView.separatorStyle = .SingleLine
-        tableView.backgroundColor = .whiteColor()
+        tableView.separatorStyle = .singleLine
+        tableView.backgroundColor = .white()
         
         // make the separator line be full width of cell in Landscape modee
         tableView.cellLayoutMarginsFollowReadableWidth = false

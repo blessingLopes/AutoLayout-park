@@ -126,6 +126,9 @@
 				TargetAttributes = {
 					64F19DE31CE7B7280062E89C = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = AHT5EPN339;
+						DevelopmentTeamName = "Blessing Itesurobo (Personal Team)";
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -279,6 +282,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mc.TimelineLayout;
 				PRODUCT_NAME = timelineLayout.temp_caseinsensitive_rename;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -292,6 +296,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mc.TimelineLayout;
 				PRODUCT_NAME = timelineLayout.temp_caseinsensitive_rename;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

@@ -24,14 +24,14 @@ class TableViewCell: UITableViewCell {
     let buttonStack: UIStackView = UIStackView()
     
     //MARK:- Closure to build buttons
-    private  var createButtonWithImage:  String -> UIButton = { name   in
+    private  var createButtonWithImage:  (String) -> UIButton = { name   in
         
-        let button   = RippleButton(type: .Custom)
-        button.setImage(UIImage(named: name), forState: .Normal)
-        button.rippleBackgroundColor = .whiteColor()
+        let button   = RippleButton(type: .custom)
+        button.setImage(UIImage(named: name), for: UIControlState())
+        button.rippleBackgroundColor = .white()
         button.shadowRippleEnable = false
         button.rippleOverBounds = true
-        button.widthAnchor.constraintEqualToAnchor(button.heightAnchor).active = true
+        button.widthAnchor.constraint(equalTo: button.heightAnchor).isActive = true
         return button
     }
     
@@ -72,9 +72,9 @@ class TableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        name.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        time.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-        body.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        name.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleHeadline)
+        time.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleSubheadline)
+        body.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleBody)
     }
 
     
@@ -84,18 +84,18 @@ class TableViewCell: UITableViewCell {
     //MARK:- Create Constraints
     private func applyButtonsConstraints(on margins: UILayoutGuide){
     
-        buttonStack.topAnchor.constraintEqualToAnchor(body.bottomAnchor, constant: 10).active = true
-        buttonStack.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor).active = true
-        buttonStack.heightAnchor.constraintEqualToConstant(20).active = true
-        buttonStack.centerXAnchor.constraintEqualToAnchor(body.centerXAnchor).active = true
+        buttonStack.topAnchor.constraint(equalTo: body.bottomAnchor, constant: 10).isActive = true
+        buttonStack.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
+        buttonStack.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        buttonStack.centerXAnchor.constraint(equalTo: body.centerXAnchor).isActive = true
     }
     
     
     
     private func applyNameLabelConstraints(on margins: UILayoutGuide){
 
-        name.leadingAnchor.constraintEqualToAnchor(avatar.trailingAnchor, constant: 10).active = true
-        name.topAnchor.constraintEqualToAnchor(margins.topAnchor).active = true
+        name.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 10).isActive = true
+        name.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
     }
     
     
@@ -103,26 +103,26 @@ class TableViewCell: UITableViewCell {
     
     private func applyTimeLabelConstraints(on margins: UILayoutGuide){
       
-        time.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor).active = true
-        time.topAnchor.constraintEqualToAnchor(margins.topAnchor).active = true
+        time.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        time.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
     }
     
     
     
     private func applyBodyLabelConstraints(on margins: UILayoutGuide){
         
-        body.leadingAnchor.constraintEqualToAnchor(avatar.trailingAnchor, constant: 10).active = true
-        body.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor).active = true
-        body.topAnchor.constraintEqualToAnchor(name.bottomAnchor, constant: 10.0).active = true
+        body.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 10).isActive = true
+        body.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        body.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 10.0).isActive = true
     }
     
     
     
     private func applyProfilePicConstrainst(on margins: UILayoutGuide){
     
-        avatar.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor,constant: -3).active = true
-        avatar.topAnchor.constraintEqualToAnchor(margins.topAnchor).active = true
-        avatar.heightAnchor.constraintEqualToAnchor(avatar.widthAnchor).active = true
+        avatar.leadingAnchor.constraint(equalTo: margins.leadingAnchor,constant: -3).isActive = true
+        avatar.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
+        avatar.heightAnchor.constraint(equalTo: avatar.widthAnchor).isActive = true
     }
     
     
@@ -132,7 +132,7 @@ class TableViewCell: UITableViewCell {
     private func setupPic(){
     
         avatar.translatesAutoresizingMaskIntoConstraints = false
-        avatar.contentMode = .ScaleAspectFit
+        avatar.contentMode = .scaleAspectFit
 
         contentView.addSubview(avatar)
     }
@@ -146,13 +146,13 @@ class TableViewCell: UITableViewCell {
         let cloud   = createButtonWithImage("Cloud")
         let glasses = createButtonWithImage("Glasses")
         
-        buttonStack.insertArrangedSubview(reply, atIndex: 0)
-        buttonStack.insertArrangedSubview(box, atIndex: 1)
-        buttonStack.insertArrangedSubview(cloud, atIndex: 2)
-        buttonStack.insertArrangedSubview(glasses, atIndex: 3)
-        buttonStack.axis = .Horizontal
-        buttonStack.distribution = .FillEqually
-        buttonStack.spacing = UIScreen.mainScreen().bounds.size.width / 6.5
+        buttonStack.insertArrangedSubview(reply, at: 0)
+        buttonStack.insertArrangedSubview(box, at: 1)
+        buttonStack.insertArrangedSubview(cloud, at: 2)
+        buttonStack.insertArrangedSubview(glasses, at: 3)
+        buttonStack.axis = .horizontal
+        buttonStack.distribution = .fillEqually
+        buttonStack.spacing = UIScreen.main().bounds.size.width / 6.5
         buttonStack.translatesAutoresizingMaskIntoConstraints = false
     
         contentView.addSubview(buttonStack)
@@ -161,21 +161,21 @@ class TableViewCell: UITableViewCell {
     private func setupLabels(){
     
         name.numberOfLines = 0
-        name.textAlignment = .Center
-        name.textColor = .darkGrayColor()
-        name.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+        name.textAlignment = .center
+        name.textColor = .darkGray()
+        name.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleHeadline)
         name.translatesAutoresizingMaskIntoConstraints = false
         
         time.numberOfLines = 0
-        time.textAlignment = .Center
-        time.textColor = .darkGrayColor()
-        time.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        time.textAlignment = .center
+        time.textColor = .darkGray()
+        time.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleSubheadline)
         time.translatesAutoresizingMaskIntoConstraints = false
         
         body.numberOfLines = 0 // set to 0 to force to display untruncated text.
-        body.textAlignment = .Natural
-        body.textColor = .darkGrayColor()
-        body.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        body.textAlignment = .natural
+        body.textColor = .darkGray()
+        body.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleBody)
         body.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.addSubview(name)

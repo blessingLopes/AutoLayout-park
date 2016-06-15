@@ -44,10 +44,10 @@ class MainViewController: UIViewController {
     
     //MARK:- Private Methods
     
-    private func removeInactiveViewController(inactiveViewController: UIViewController?){
+    private func removeInactiveViewController(_ inactiveViewController: UIViewController?){
         if isViewLoaded(){
             if let inActiveVC = inactiveViewController {
-                inActiveVC.willMoveToParentViewController(nil)
+                inActiveVC.willMove(toParentViewController: nil)
                 inActiveVC.view.removeFromSuperview()
                 inActiveVC.removeFromParentViewController()
             }
@@ -55,13 +55,13 @@ class MainViewController: UIViewController {
         
     }
     
-    private func addActiveViewcontroller(activeViewController: UIViewController?){
+    private func addActiveViewcontroller(_ activeViewController: UIViewController?){
         if isViewLoaded(){
             if let activeVC = activeViewController{
                 addChildViewController(activeVC)
                 activeVC.view.frame = view.bounds
                 view.addSubview(activeVC.view)
-                activeVC.didMoveToParentViewController(self)
+                activeVC.didMove(toParentViewController: self)
             }
         }
     }
