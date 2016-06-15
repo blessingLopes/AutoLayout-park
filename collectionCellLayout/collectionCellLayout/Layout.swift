@@ -13,16 +13,16 @@ class Layout: UICollectionViewLayout {
 	
 	
 	// MARK:- Stored Properties
-    var earlierAttributesInfo : [NSIndexPath : UICollectionViewLayoutAttributes ]  = [:]
-    var attributesInfo        : [NSIndexPath : UICollectionViewLayoutAttributes ]  = [:]
+    var earlierAttributesInfo : [IndexPath : UICollectionViewLayoutAttributes ]  = [:]
+    var attributesInfo        : [IndexPath : UICollectionViewLayoutAttributes ]  = [:]
 
     
-    var contentSize : CGSize = CGSizeZero
-    var tappedCellIndexPath: NSIndexPath? 
+    var contentSize : CGSize = CGSize.zero
+    var tappedCellIndexPath: IndexPath? 
     
  
     // Prepare the  Layout
-	override func prepareLayout() {
+	override func prepare() {
         
         prepareCells()
 	}
@@ -40,23 +40,23 @@ class Layout: UICollectionViewLayout {
 	
     // It's  more efficient to pick out only the cells which intersect the rect,
     // then simply returning an array with all the attributes.
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var attributes: [UICollectionViewLayoutAttributes] = []
 
-        for ( _ , v) in attributesInfo  where CGRectIntersectsRect(rect, v.frame){ attributes.append(v) }
+        for ( _ , v) in attributesInfo  where rect.intersects(v.frame){ attributes.append(v) }
         
         return attributes
     }
     
 	
-	override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+	override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
 		return attributesInfo[indexPath]
 	}
 	
 	
 	
 	
-	override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+	override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
 	}
 
@@ -65,14 +65,14 @@ class Layout: UICollectionViewLayout {
 	// MARK:- UICollectionViewLayout subClass Optional Methods from here on down
     // MARK:-  Cell Layout Attributes
     
-    override func initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+    override func initialLayoutAttributesForAppearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return earlierAttributesInfo[itemIndexPath]
     }
     
    
     
-    override func finalLayoutAttributesForDisappearingItemAtIndexPath(itemIndexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        return layoutAttributesForItemAtIndexPath(itemIndexPath)
+    override func finalLayoutAttributesForDisappearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return layoutAttributesForItem(at: itemIndexPath)
     }
     
   
@@ -80,11 +80,11 @@ class Layout: UICollectionViewLayout {
 
 	
     // adjust collectionView contentOfset when the cell tapped animates out of the screen visible rect
-    override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint) -> CGPoint {
+    override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
         guard let tappedIndex = tappedCellIndexPath else { return proposedContentOffset }
         
         var finalContentOffset : CGPoint?
-        if let frame = layoutAttributesForItemAtIndexPath(tappedIndex)?.frame {
+        if let frame = layoutAttributesForItem(at: tappedIndex)?.frame {
             let collectionViewHeight = collectionView?.bounds.size.height ?? 0
             
             let collectionViewTop = proposedContentOffset.y
@@ -98,9 +98,9 @@ class Layout: UICollectionViewLayout {
             if cellBottom < collectionViewTop || cellTop - deltaCellExpansion > collectionViewBottom{
                 finalContentOffset = proposedContentOffset
             }else if cellBottom > collectionViewBottom {
-                finalContentOffset = CGPointMake(0.0, collectionViewTop + (cellBottom - collectionViewBottom))
+                finalContentOffset = CGPoint(x: 0.0, y: collectionViewTop + (cellBottom - collectionViewBottom))
             } else if cellTop < collectionViewTop {
-                finalContentOffset = CGPointMake(0.0, collectionViewTop - (collectionViewTop - cellTop) )
+                finalContentOffset = CGPoint(x: 0.0, y: collectionViewTop - (collectionViewTop - cellTop) )
             }
         }
         
@@ -118,7 +118,7 @@ class Layout: UICollectionViewLayout {
         
         let cellsize   = LayoutSetupValues.cellSize
         let numberOfsections = collectionView.numberOfSections()
-        let itemCount  = collectionView.numberOfItemsInSection(0)
+        let itemCount  = collectionView.numberOfItems(inSection: 0)
 
         earlierAttributesInfo = attributesInfo
         
@@ -130,15 +130,15 @@ class Layout: UICollectionViewLayout {
           
             for  i in 0 ..< itemCount{
                 
-                let indexPath = NSIndexPath(forItem: i, inSection: section)
-                let attributes  = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
+                let indexPath = IndexPath(item: i, section: section)
+                let attributes  = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                
                 let newSize = CGSize(
                     width:  cellsize.width,
                     height: indexPath == tappedCellIndexPath ? LayoutSetupValues.animationStretch : cellsize.height
                 )
            
-                attributes.frame =  CGRectMake(0, yindex, cellsize.width, newSize.height)
+                attributes.frame =  CGRect(x: 0, y: yindex, width: cellsize.width, height: newSize.height)
                 attributes.alpha = 1.0
                 zindex -= 1
                 attributes.zIndex = zindex
@@ -147,7 +147,7 @@ class Layout: UICollectionViewLayout {
                 yindex += newSize.height
             }
         }
-        contentSize = CGSizeMake(0.0, yindex )
+        contentSize = CGSize(width: 0.0, height: yindex )
     }
 	
   

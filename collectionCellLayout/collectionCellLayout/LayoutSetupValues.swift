@@ -19,8 +19,8 @@ struct LayoutSetupValues {
     }
     
     
-   static var scr : CGRect { return UIScreen.mainScreen().bounds }
-   static var scrSize : CGSize { return UIScreen.mainScreen().bounds.size }
+   static var scr : CGRect { return UIScreen.main().bounds }
+   static var scrSize : CGSize { return UIScreen.main().bounds.size }
 	
 
     
@@ -29,7 +29,7 @@ struct LayoutSetupValues {
     
 	
 	// The Cell Size
-   static var cellSize : CGSize { return CGSizeMake(LayoutSetupValues.cellWidth, 70)  }
+   static var cellSize : CGSize { return CGSize(width: LayoutSetupValues.cellWidth, height: 70)  }
 	
 	
 }

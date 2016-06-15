@@ -47,7 +47,7 @@ class CollectionViewController: UICollectionViewController{
  
     
     // MARK:- collection view Delegate
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         animateCellAt(index: indexPath)
       
     }
@@ -55,7 +55,7 @@ class CollectionViewController: UICollectionViewController{
     
     
     //MARK:- ScrollView Delegate
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > -10 {  toogleStatus(true) }
         else { toogleStatus(false) }
     }
@@ -66,8 +66,8 @@ class CollectionViewController: UICollectionViewController{
     //MARK:- Private convenience Methods
     
     
-    private func toogleStatus( on: Bool){
-        UIView.animateWithDuration(0.5, animations: {
+    private func toogleStatus( _ on: Bool){
+        UIView.animate(withDuration: 0.5, animations: {
             self.status = on
             self.setNeedsStatusBarAppearanceUpdate()
         })
@@ -75,12 +75,12 @@ class CollectionViewController: UICollectionViewController{
     
     
     
-    private func setupCollectionViewWithDataSource(data: UICollectionViewDataSource){
+    private func setupCollectionViewWithDataSource(_ data: UICollectionViewDataSource){
         
         theLayout = collectionViewLayout as? Layout
         collectionView?.dataSource = data
         collectionView?.delegate   = self
-        collectionView?.registerClass(Cell.self, forCellWithReuseIdentifier: Cell.cellreuseIdentifier)
+        collectionView?.register(Cell.self, forCellWithReuseIdentifier: Cell.cellreuseIdentifier)
         let collectionInsets = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0)
         collectionView?.contentInset = collectionInsets
  
@@ -89,11 +89,11 @@ class CollectionViewController: UICollectionViewController{
     // setup dynamic type obsever
     private func prepareFontChangeObserver(){
         
-        let application = UIApplication.sharedApplication()
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        let queue = NSOperationQueue.mainQueue()
+        let application = UIApplication.shared()
+        let notificationCenter = NotificationCenter.default()
+        let queue = OperationQueue.main()
         
-        fontChangeObserver = notificationCenter.addObserverForName(UIContentSizeCategoryDidChangeNotification, object: application, queue: queue) {
+        fontChangeObserver = notificationCenter.addObserver(forName: NSNotification.Name.UIContentSizeCategoryDidChange, object: application, queue: queue) {
             // [unowned self] to prevent a block from holding a strong reference to self
             [unowned self] _ in
             
@@ -107,13 +107,13 @@ class CollectionViewController: UICollectionViewController{
     
 
     // animate collection view cell
-    private func animateCellAt(index indexPath: NSIndexPath){
+    private func animateCellAt(index indexPath: IndexPath){
        
             theLayout?.tappedCellIndexPath = theLayout?.tappedCellIndexPath == indexPath ? nil : indexPath
         
         
-            UIView.animateWithDuration(
-                0.5,
+            UIView.animate(
+                withDuration: 0.5,
                 delay: 0.0,
                 usingSpringWithDamping:  0.7,
                 initialSpringVelocity: 4,
@@ -129,7 +129,7 @@ class CollectionViewController: UICollectionViewController{
     
     //MARK:- Status bar
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+        return .lightContent
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -137,7 +137,7 @@ class CollectionViewController: UICollectionViewController{
     }
 
     override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
-        return .Slide
+        return .slide
     }
     
     

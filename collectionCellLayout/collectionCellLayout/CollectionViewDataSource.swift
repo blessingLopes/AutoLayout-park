@@ -78,31 +78,31 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource{
     
     //MARK: CollectionView DataSource Methods
     
-	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+	func numberOfSections(in collectionView: UICollectionView) -> Int {
 		return 1
 	}
 	
 		
 	
-	 func collectionView( collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+	 func collectionView( _ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return 40
     }
 	
 	
 	
-	 func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+	 func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let hue = CGFloat((indexPath.item)) / 40
-        var cellColor = UIColor.clearColor()
+        let hue = CGFloat(((indexPath as NSIndexPath).item)) / 40
+        var cellColor = UIColor.clear()
      
         cellColor = UIColor(hue: CGFloat(hue), saturation: 1.0, brightness: 1.0, alpha: 1.0)
         
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Cell.cellreuseIdentifier, forIndexPath: indexPath) as! Cell
-        let temp = 40 - indexPath.item
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.cellreuseIdentifier, for: indexPath) as! Cell
+        let temp = 40 - (indexPath as NSIndexPath).item
 		cell.labelTemp.text = "\(temp)" + "º"
-        cell.land.text = countries[indexPath.item]
-        cell.city.text = cities[indexPath.item]
+        cell.land.text = countries[(indexPath as NSIndexPath).item]
+        cell.city.text = cities[(indexPath as NSIndexPath).item]
         cell.time.text = "12:\(temp)"
 		cell.contentView.backgroundColor = cellColor
 		

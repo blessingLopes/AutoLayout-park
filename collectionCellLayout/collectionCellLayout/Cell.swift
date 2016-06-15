@@ -43,17 +43,17 @@ class Cell: UICollectionViewCell {
         // set constraint on label using Layout Guides
         let margins = contentView.layoutMarginsGuide
         
-        labelTemp.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor, constant: -20).active = true
-        labelTemp.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor).active = true
+        labelTemp.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -20).isActive = true
+        labelTemp.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
         
-        land.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor, constant: 20).active = true
-        land.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor).active = true
+        land.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20).isActive = true
+        land.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
         
-        city.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor, constant: 0).active = true
-        city.bottomAnchor.constraintEqualToAnchor(land.topAnchor, constant: -10).active = true
+        city.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 0).isActive = true
+        city.bottomAnchor.constraint(equalTo: land.topAnchor, constant: -10).isActive = true
         
-        time.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor, constant: -10).active = true
-        time.topAnchor.constraintEqualToAnchor(margins.topAnchor, constant: 5).active = true
+        time.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -10).isActive = true
+        time.topAnchor.constraint(equalTo: margins.topAnchor, constant: 5).isActive = true
   
         super.updateConstraints()
     }
@@ -65,34 +65,34 @@ class Cell: UICollectionViewCell {
     
     private func setupLabel(){
         
-        labelTemp.textAlignment = .Center
-        labelTemp.lineBreakMode = .ByTruncatingMiddle
-        labelTemp.font = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
+        labelTemp.textAlignment = .center
+        labelTemp.lineBreakMode = .byTruncatingMiddle
+        labelTemp.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleTitle1)
         labelTemp.translatesAutoresizingMaskIntoConstraints = false
         labelTemp.numberOfLines = 0
-        labelTemp.textColor = .whiteColor()
+        labelTemp.textColor = .white()
         
-        land.textAlignment = .Left
-        land.lineBreakMode = .ByTruncatingTail
-        land.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        land.textAlignment = .left
+        land.lineBreakMode = .byTruncatingTail
+        land.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleSubheadline)
         land.translatesAutoresizingMaskIntoConstraints = false
         land.numberOfLines = 0
-        land.textColor = .whiteColor()
+        land.textColor = .white()
 
-        city.textAlignment = .Left
-        city.lineBreakMode = .ByTruncatingTail
-        city.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption2)
+        city.textAlignment = .left
+        city.lineBreakMode = .byTruncatingTail
+        city.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleCaption2)
         city.translatesAutoresizingMaskIntoConstraints = false
         city.numberOfLines = 0
-        city.textColor = .whiteColor()
+        city.textColor = .white()
 
         
-        time.textAlignment = .Left
-        time.lineBreakMode = .ByTruncatingTail
-        time.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption2)
+        time.textAlignment = .left
+        time.lineBreakMode = .byTruncatingTail
+        time.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleCaption2)
         time.translatesAutoresizingMaskIntoConstraints = false
         time.numberOfLines = 0
-        time.textColor = .whiteColor()
+        time.textColor = .white()
         
         contentView.addSubview(labelTemp)
         contentView.addSubview(land)
@@ -107,8 +107,8 @@ class Cell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        labelTemp.font = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
-        land.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        labelTemp.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleTitle1)
+        land.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleSubheadline)
     }
 
 	
