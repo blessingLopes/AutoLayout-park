@@ -28,7 +28,7 @@ class TableViewCell: UITableViewCell {
         
         let button   = RippleButton(type: .custom)
         button.setImage(UIImage(named: name), for: UIControlState())
-        button.rippleBackgroundColor = .white()
+        button.rippleBackgroundColor = .red()
         button.shadowRippleEnable = false
         button.rippleOverBounds = true
         button.widthAnchor.constraint(equalTo: button.heightAnchor).isActive = true
