@@ -90,8 +90,8 @@ class CollectionViewController: UICollectionViewController{
     private func prepareFontChangeObserver(){
         
         let application = UIApplication.shared()
-        let notificationCenter = NotificationCenter.default()
-        let queue = OperationQueue.main()
+        let notificationCenter = NotificationCenter.default
+        let queue = OperationQueue.main
         
         fontChangeObserver = notificationCenter.addObserver(forName: NSNotification.Name.UIContentSizeCategoryDidChange, object: application, queue: queue) {
             // [unowned self] to prevent a block from holding a strong reference to self
