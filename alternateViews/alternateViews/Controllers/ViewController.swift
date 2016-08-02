@@ -11,8 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     
-    let port = PortraitView(frame: UIScreen.main().bounds)
-    let land = LandscapeView(frame: UIScreen.main().bounds)
+    let port = PortraitView(frame: UIScreen.main.bounds)
+    let land = LandscapeView(frame: UIScreen.main.bounds)
     
     
     

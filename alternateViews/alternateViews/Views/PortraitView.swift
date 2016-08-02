@@ -30,7 +30,7 @@ convenience init() {
 func setup() {
     
     let margins  = self.layoutMarginsGuide
-    backgroundColor = .white()
+    backgroundColor = #colorLiteral(red: 1, green: 0.99997437, blue: 0.9999912977, alpha: 1)
     
     let title = setupTitle()
     let profileView = setUpProfilePic()
@@ -125,7 +125,7 @@ func setup() {
         lab.translatesAutoresizingMaskIntoConstraints = false
         lab.layer.cornerRadius = 10
         lab.clipsToBounds = true
-        lab.layer.shadowColor = UIColor.black().cgColor
+        lab.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
         lab.layer.shadowOffset = CGSize(width: 1, height: 1)
         lab.layer.shadowOpacity = 0.2
         lab.layer.shadowRadius = 0.1
@@ -159,7 +159,7 @@ func setup() {
     private func makeButtonWithTitle(_ title: String,  fontSize: Int) -> UIButton {
         let button = UIButton(type: .system)
         
-        button.tintColor = .red()
+        button.tintColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
         button.setTitle(title, for: UIControlState())
         button.titleLabel?.font = .boldSystemFont(ofSize: CGFloat(fontSize))
         button.translatesAutoresizingMaskIntoConstraints = false

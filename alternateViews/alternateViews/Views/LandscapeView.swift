@@ -34,7 +34,7 @@ class LandscapeView: UIView{
     
    private func setup() {
         let margins = self.layoutMarginsGuide
-        backgroundColor = .white()
+        backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 
         let title: UILabel = setupTitle()
         let pic = setUpProfilePic()
@@ -134,7 +134,7 @@ class LandscapeView: UIView{
     private func makeButtonWithTitle(_ title: String,  fontSize: Int) -> UIButton {
         let button = UIButton(type: .system)
 
-        button.tintColor = .red()
+        button.tintColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
         button.setTitle(title, for: UIControlState())
         button.titleLabel?.font = .boldSystemFont(ofSize: CGFloat(fontSize))
         button.translatesAutoresizingMaskIntoConstraints = false
