@@ -44,10 +44,10 @@ class SolarSystemVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .black()
+        view.backgroundColor = .black
         let layoutGuide:UILayoutGuide = UILayoutGuide()
         
-        let sizeWidth = UIScreen.main().bounds.width
+        let sizeWidth = UIScreen.main.bounds.width
         let tap = UITapGestureRecognizer(target: self, action: #selector(SolarSystemVC.tapAction(_:) ))
    
         
@@ -175,9 +175,7 @@ class SolarSystemVC: UIViewController{
         
     }
     
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
+    override var prefersStatusBarHidden: Bool { return true  }
     
     
     
