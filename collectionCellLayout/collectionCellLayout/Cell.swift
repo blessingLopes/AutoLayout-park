@@ -68,6 +68,8 @@ class Cell: UICollectionViewCell {
         labelTemp.textAlignment = .center
         labelTemp.lineBreakMode = .byTruncatingMiddle
         labelTemp.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleTitle1)
+        
+        if #available(iOS 10.0, *) {  labelTemp.adjustsFontForContentSizeCategory = true    }
         labelTemp.translatesAutoresizingMaskIntoConstraints = false
         labelTemp.numberOfLines = 0
         labelTemp.textColor = .white
@@ -75,6 +77,7 @@ class Cell: UICollectionViewCell {
         land.textAlignment = .left
         land.lineBreakMode = .byTruncatingTail
         land.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleSubheadline)
+        if #available(iOS 10.0, *) {  land.adjustsFontForContentSizeCategory = true    }
         land.translatesAutoresizingMaskIntoConstraints = false
         land.numberOfLines = 0
         land.textColor = .white
