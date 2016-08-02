@@ -29,8 +29,8 @@ class CalculatorViewController: UIViewController {
 
         button.titleLabel?.font = UIFont(name: "HelveticaNeue-Thin", size: 20)
         button.setTitle(name, for: [])
-        button.backgroundColor = .lightGray()
-        button.tintColor = UIColor.white()
+        button.backgroundColor = .lightGray
+        button.tintColor = .white
         return button
     }
     
@@ -41,7 +41,7 @@ class CalculatorViewController: UIViewController {
         button.titleLabel?.font = UIFont(name: "HelveticaNeue-Thin", size: 15)
         button.setTitle(name, for: [ ])
         button.backgroundColor = UIColor(white: 0.5, alpha: 1.0)
-        button.tintColor = .white()
+        button.tintColor = .white
         return button
     }
     
@@ -50,7 +50,7 @@ class CalculatorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .darkGray()
+        view.backgroundColor = .darkGray
         buildSimpleCalc()
         view.addSubview(simpleCalcStack ?? UIStackView())
         
@@ -83,7 +83,7 @@ class CalculatorViewController: UIViewController {
   // MARK:- Build and layout the simple calculator
     private func  buildSimpleCalc(){
     
-        let sizeHeight = UIScreen.main().bounds.height
+        let sizeHeight = UIScreen.main.bounds.height
    
         
         let zeroButton  = createButtonWithText("0")
@@ -110,11 +110,11 @@ class CalculatorViewController: UIViewController {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.text = "24"
         textView.font = UIFont(name: "HelveticaNeue-Thin", size: 60)
-        textView.textColor = .white()
+        textView.textColor = .white
         textView.textAlignment = .right
         
         let textHostView = UIView(frame: .zero)
-        textHostView.backgroundColor = .darkGray()
+        textHostView.backgroundColor = .darkGray
         textHostView.translatesAutoresizingMaskIntoConstraints = false
         textHostView.addSubview(textView)
 
@@ -173,7 +173,7 @@ class CalculatorViewController: UIViewController {
       // MARK:- Build and layout the Advanced calculator
     private func buildAdvancedCalcStack() -> UIStackView{
     
-        let sizeHeight = UIScreen.main().bounds.height
+        let sizeHeight = UIScreen.main.bounds.height
     
         let dotButton   = createAdvButtonWithText("sinh")
         let equalButton = createAdvButtonWithText("cosh")
@@ -202,7 +202,7 @@ class CalculatorViewController: UIViewController {
 
         
         let textHostView = UIView(frame: .zero)
-        textHostView.backgroundColor = .darkGray()
+        textHostView.backgroundColor = .darkGray
         textHostView.translatesAutoresizingMaskIntoConstraints = false
 
         
@@ -246,11 +246,8 @@ class CalculatorViewController: UIViewController {
     }
     
   
-
-    override func prefersStatusBarHidden() -> Bool {
-        return false
-    }
-
+    
+    override var prefersStatusBarHidden: Bool {  return false }
 
 }//End
 
