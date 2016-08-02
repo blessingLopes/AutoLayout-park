@@ -31,11 +31,7 @@ class Layout: UICollectionViewLayout {
 	
 
 
-	override func collectionViewContentSize() -> CGSize {
-		return  contentSize
-	}
-	
-	
+    override var collectionViewContentSize: CGSize { return  contentSize	}
 	
 	
     // It's  more efficient to pick out only the cells which intersect the rect,
@@ -117,7 +113,7 @@ class Layout: UICollectionViewLayout {
         guard let collectionView = collectionView else { return }
         
         let cellsize   = LayoutSetupValues.cellSize
-        let numberOfsections = collectionView.numberOfSections()
+        let numberOfsections = collectionView.numberOfSections
         let itemCount  = collectionView.numberOfItems(inSection: 0)
 
         earlierAttributesInfo = attributesInfo

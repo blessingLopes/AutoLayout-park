@@ -70,21 +70,21 @@ class Cell: UICollectionViewCell {
         labelTemp.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleTitle1)
         labelTemp.translatesAutoresizingMaskIntoConstraints = false
         labelTemp.numberOfLines = 0
-        labelTemp.textColor = .white()
+        labelTemp.textColor = .white
         
         land.textAlignment = .left
         land.lineBreakMode = .byTruncatingTail
         land.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleSubheadline)
         land.translatesAutoresizingMaskIntoConstraints = false
         land.numberOfLines = 0
-        land.textColor = .white()
+        land.textColor = .white
 
         city.textAlignment = .left
         city.lineBreakMode = .byTruncatingTail
         city.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleCaption2)
         city.translatesAutoresizingMaskIntoConstraints = false
         city.numberOfLines = 0
-        city.textColor = .white()
+        city.textColor = .white
 
         
         time.textAlignment = .left
@@ -92,7 +92,7 @@ class Cell: UICollectionViewCell {
         time.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleCaption2)
         time.translatesAutoresizingMaskIntoConstraints = false
         time.numberOfLines = 0
-        time.textColor = .white()
+        time.textColor = .white
         
         contentView.addSubview(labelTemp)
         contentView.addSubview(land)

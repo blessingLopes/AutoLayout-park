@@ -93,7 +93,7 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource{
 	 func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let hue = CGFloat(((indexPath as NSIndexPath).item)) / 40
-        var cellColor = UIColor.clear()
+        var cellColor = UIColor.clear
      
         cellColor = UIColor(hue: CGFloat(hue), saturation: 1.0, brightness: 1.0, alpha: 1.0)
         

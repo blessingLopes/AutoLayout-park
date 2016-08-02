@@ -89,7 +89,7 @@ class CollectionViewController: UICollectionViewController{
     // setup dynamic type obsever
     private func prepareFontChangeObserver(){
         
-        let application = UIApplication.shared()
+        let application = UIApplication.shared
         let notificationCenter = NotificationCenter.default
         let queue = OperationQueue.main
         
@@ -128,17 +128,9 @@ class CollectionViewController: UICollectionViewController{
     
     
     //MARK:- Status bar
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .lightContent
-    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return status
-    }
-
-    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
-        return .slide
-    }
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent  }
+    override var prefersStatusBarHidden: Bool {  return status  }
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation { return .slide  }
     
     
     

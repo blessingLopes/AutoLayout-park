@@ -19,8 +19,8 @@ struct LayoutSetupValues {
     }
     
     
-   static var scr : CGRect { return UIScreen.main().bounds }
-   static var scrSize : CGSize { return UIScreen.main().bounds.size }
+   static var scr : CGRect { return UIScreen.main.bounds }
+   static var scrSize : CGSize { return UIScreen.main.bounds.size }
 	
 
     
