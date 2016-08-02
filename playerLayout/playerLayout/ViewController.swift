@@ -11,8 +11,8 @@ import UIKit
 class PlayerViewController: UIViewController {
     
     var mainStack: UIStackView = UIStackView()
-    var screenHeight: CGFloat { return UIScreen.main().bounds.height}
-    var screenWidth: CGFloat {return UIScreen.main().bounds.width}
+    var screenHeight: CGFloat { return UIScreen.main.bounds.height}
+    var screenWidth: CGFloat {return UIScreen.main.bounds.width}
     // MARK:- View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +31,8 @@ class PlayerViewController: UIViewController {
     
     private func makeButtonWithTitle(_ title: String,  fontSize: Int) -> UIButton {
         let button = UIButton(type: .system)
-        button.backgroundColor = .red()
-        button.tintColor = .black()
+        button.backgroundColor = .red
+        button.tintColor = .black
         button.setTitle(title, for: UIControlState())
         button.titleLabel?.font = .boldSystemFont(ofSize: CGFloat(fontSize))
         return button
@@ -61,7 +61,7 @@ class PlayerViewController: UIViewController {
         let at = UITextView()
         at.text = "0:34"
         at.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleCaption2)
-        at.backgroundColor = .red()
+        at.backgroundColor = .red
         at.textAlignment = .left
         at.isEditable = false
 
@@ -69,16 +69,16 @@ class PlayerViewController: UIViewController {
         let trackTime = UITextView()
         trackTime.text = "-3:19"
         trackTime.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleCaption2)
-        trackTime.backgroundColor = .red()
+        trackTime.backgroundColor = .red
         trackTime.textAlignment = .right
         trackTime.isEditable = false
 
 
         let leftDummyView = UIView()
-        leftDummyView.backgroundColor = .red()
+        leftDummyView.backgroundColor = .red
 
         let rightDummyView = UIView()
-         rightDummyView.backgroundColor = .red()
+         rightDummyView.backgroundColor = .red
 
         
         let timeStack = UIStackView(arrangedSubviews: [leftDummyView, at ,trackTime, rightDummyView ])
@@ -116,7 +116,7 @@ class PlayerViewController: UIViewController {
         let albumTitle = UITextView()
         albumTitle.text = "Hail to the Thief"
         albumTitle.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleHeadline)
-        albumTitle.backgroundColor = .red()
+        albumTitle.backgroundColor = .red
         albumTitle.textAlignment = .center
         albumTitle.isEditable = false
 
@@ -124,7 +124,7 @@ class PlayerViewController: UIViewController {
         let trackTitle = UITextView()
         trackTitle.text = "2+2 = 5"
         trackTitle.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleFootnote)
-        trackTitle.backgroundColor = .red()
+        trackTitle.backgroundColor = .red
         trackTitle.textAlignment = .center
         trackTitle.isEditable = false
         
@@ -158,20 +158,20 @@ class PlayerViewController: UIViewController {
         sliderDemo.minimumValue = 0
         sliderDemo.maximumValue = 50
         sliderDemo.isContinuous = true
-        sliderDemo.tintColor = .black()
+        sliderDemo.tintColor = .black
         sliderDemo.value = 40
         sliderDemo.contentMode = .scaleAspectFill
         sliderDemo.clipsToBounds = true
-        sliderDemo.backgroundColor = .red()
-        sliderDemo.maximumTrackTintColor = .red()
-        sliderDemo.thumbTintColor = .black()
+        sliderDemo.backgroundColor = .red
+        sliderDemo.maximumTrackTintColor = .red
+        sliderDemo.thumbTintColor = .black
        
         
         let leftSliderDummyView = UIView()
-        leftSliderDummyView.backgroundColor = .red()
+        leftSliderDummyView.backgroundColor = .red
         
         let rightSliderDummyView = UIView()
-        rightSliderDummyView.backgroundColor = .red()
+        rightSliderDummyView.backgroundColor = .red
 
   
         let sliderStack = UIStackView(arrangedSubviews: [ leftSliderDummyView, sliderDemo, rightSliderDummyView])
@@ -242,8 +242,6 @@ class PlayerViewController: UIViewController {
     
     //MARK:- Status bar preferences
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .lightContent
-    }
+    override var preferredStatusBarStyle: UIStatusBarStyle {  return .lightContent  }
     
 }// END
