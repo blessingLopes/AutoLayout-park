@@ -31,12 +31,15 @@ class MainViewController: UIViewController {
     
     
     
+ 
+    
+    
     
     // View life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         activeViewController = table
-    
     }
     
 
@@ -45,7 +48,7 @@ class MainViewController: UIViewController {
     //MARK:- Private Methods
     
     private func removeInactiveViewController(_ inactiveViewController: UIViewController?){
-        if isViewLoaded(){
+        if isViewLoaded{
             if let inActiveVC = inactiveViewController {
                 inActiveVC.willMove(toParentViewController: nil)
                 inActiveVC.view.removeFromSuperview()
@@ -56,7 +59,7 @@ class MainViewController: UIViewController {
     }
     
     private func addActiveViewcontroller(_ activeViewController: UIViewController?){
-        if isViewLoaded(){
+        if isViewLoaded{
             if let activeVC = activeViewController{
                 addChildViewController(activeVC)
                 activeVC.view.frame = view.bounds

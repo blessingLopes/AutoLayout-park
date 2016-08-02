@@ -16,19 +16,19 @@ class TableViewCell: UITableViewCell {
     
     static var reuseIdentifier: String { return "\(self)"}
     
-    let body: UILabel = UILabel()
-    let name: UILabel = UILabel()
-    let time: UILabel = UILabel()
-    let avatar: UIImageView = UIImageView()
-    let at : UILabel = UILabel()
-    let buttonStack: UIStackView = UIStackView()
+    let body = UILabel()
+    let name = UILabel()
+    let time = UILabel()
+    let avatar = UIImageView()
+    let at = UILabel()
+    let buttonStack = UIStackView()
     
     //MARK:- Closure to build buttons
     private  var createButtonWithImage:  (String) -> UIButton = { name   in
         
         let button   = RippleButton(type: .custom)
         button.setImage(UIImage(named: name), for: UIControlState())
-        button.rippleBackgroundColor = .red()
+        button.rippleBackgroundColor = .red
         button.shadowRippleEnable = false
         button.rippleOverBounds = true
         button.widthAnchor.constraint(equalTo: button.heightAnchor).isActive = true
@@ -152,7 +152,7 @@ class TableViewCell: UITableViewCell {
         buttonStack.insertArrangedSubview(glasses, at: 3)
         buttonStack.axis = .horizontal
         buttonStack.distribution = .fillEqually
-        buttonStack.spacing = UIScreen.main().bounds.size.width / 6.5
+        buttonStack.spacing = UIScreen.main.bounds.size.width / 6.5
         buttonStack.translatesAutoresizingMaskIntoConstraints = false
     
         contentView.addSubview(buttonStack)
@@ -162,19 +162,19 @@ class TableViewCell: UITableViewCell {
     
         name.numberOfLines = 0
         name.textAlignment = .center
-        name.textColor = .darkGray()
+        name.textColor = .darkGray
         name.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleHeadline)
         name.translatesAutoresizingMaskIntoConstraints = false
         
         time.numberOfLines = 0
         time.textAlignment = .center
-        time.textColor = .darkGray()
+        time.textColor = .darkGray
         time.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleSubheadline)
         time.translatesAutoresizingMaskIntoConstraints = false
         
         body.numberOfLines = 0 // set to 0 to force to display untruncated text.
         body.textAlignment = .natural
-        body.textColor = .darkGray()
+        body.textColor = .darkGray
         body.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleBody)
         body.translatesAutoresizingMaskIntoConstraints = false
         
@@ -189,8 +189,8 @@ class TableViewCell: UITableViewCell {
         
         // set the separator line to full width of cell
         preservesSuperviewLayoutMargins = false
-        separatorInset = UIEdgeInsetsZero
-        layoutMargins = UIEdgeInsetsZero
+        separatorInset = .zero
+        layoutMargins = .zero
         
         setupLabels()
         setupPic()

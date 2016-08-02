@@ -97,7 +97,7 @@ class TableViewContoller: UITableViewController {
         
         //Table view config
         tableView.separatorStyle = .singleLine
-        tableView.backgroundColor = .white()
+        tableView.backgroundColor = .white
         
         // make the separator line be full width of cell in Landscape modee
         tableView.cellLayoutMarginsFollowReadableWidth = false
