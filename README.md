@@ -3,13 +3,13 @@
 
 
 
-These projects try to explore AutoLayout in IOS, in particular the new IOS9 APIs and how to use them to create animations. 
+These projects try to explore AutoLayout in IOS, in particular the new IOS9 APIs and how to use them to create animations.
 
-All projects meet two conditions: 
+All projects meet two conditions:
  1. No Storyboards or use of interface builder.
  2. No third party frameworks or APIs.
 
-**Please note:** that the UITableViews or UICollectionsViews used in these sample projects are fully functional but most of the UI elements are only used to construct the layout and don't support any user interaction.
+**Please note:** that the UITableViews or UICollectionsViews used in these sample projects, even though they are fully functional,  most of the UI elements are only used to construct the layout and don't support any user interaction.
 
 * [PlayerLayout](https://github.com/manuelCarlos/AutoLayout-park/tree/master/playerLayout)
  - Nested UIStackViews.
@@ -40,7 +40,7 @@ All projects meet two conditions:
 * [planetLayoutAnimation](https://github.com/manuelCarlos/AutoLayout-park/tree/master/planetLayoutAnimation)
  - Layout guides and anchors to create constraints.
  - Animate constraints using UIView animations.
- 
+
 
 <p align="center">
    <img src="http://manuelcarlos.github.io/images/planetAnimation.gif" >
@@ -51,7 +51,7 @@ All projects meet two conditions:
 * [calculatorLayout](https://github.com/manuelCarlos/AutoLayout-park/tree/master/calculatorLayout)
  - Layout guides create constraints.
  - Custom rotation animation of nested UIstackViews
- 
+
 
 <p align="center">
    <img src="http://manuelcarlos.github.io/images/calculatorLayout.gif" >
