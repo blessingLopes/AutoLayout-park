@@ -16,7 +16,9 @@ All projects meet two conditions:
  - Custom View Controller rotation animation.
  - Constraints Using Layout Anchors.
 
-
+<p align="center">
+   <img src="http://manuelcarlos.github.io/images/playerLayout.gif" >
+</p>
 
 
 * [collectionCellLayout](https://github.com/manuelCarlos/AutoLayout-park/tree/master/collectionCellLayout)
