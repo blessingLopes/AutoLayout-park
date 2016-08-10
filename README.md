@@ -17,7 +17,7 @@ All projects meet two conditions:
  - Constraints Using Layout Anchors.
 
 <p align="center">
-   <img src="http://manuelcarlos.github.io/images/playerLayout.gif" >
+   <img src="http://manuelcarlos.github.io/images/playerLayoutCopy.gif" >
 </p>
 
 
