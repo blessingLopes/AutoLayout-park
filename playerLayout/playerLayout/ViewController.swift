@@ -60,7 +60,7 @@ class PlayerViewController: UIViewController {
         
         let at = UITextView()
         at.text = "0:34"
-        at.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleCaption2)
+        at.font = UIFont.preferredFont(forTextStyle: .caption2)
         at.backgroundColor = .red
         at.textAlignment = .left
         at.isEditable = false
@@ -68,7 +68,7 @@ class PlayerViewController: UIViewController {
         
         let trackTime = UITextView()
         trackTime.text = "-3:19"
-        trackTime.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleCaption2)
+        trackTime.font = UIFont.preferredFont(forTextStyle: .caption2)
         trackTime.backgroundColor = .red
         trackTime.textAlignment = .right
         trackTime.isEditable = false
@@ -115,7 +115,7 @@ class PlayerViewController: UIViewController {
         
         let albumTitle = UITextView()
         albumTitle.text = "Hail to the Thief"
-        albumTitle.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleHeadline)
+        albumTitle.font = UIFont.preferredFont(forTextStyle: .headline)
         albumTitle.backgroundColor = .red
         albumTitle.textAlignment = .center
         albumTitle.isEditable = false
@@ -123,7 +123,7 @@ class PlayerViewController: UIViewController {
         
         let trackTitle = UITextView()
         trackTitle.text = "2+2 = 5"
-        trackTitle.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleFootnote)
+        trackTitle.font = UIFont.preferredFont(forTextStyle: .footnote)
         trackTitle.backgroundColor = .red
         trackTitle.textAlignment = .center
         trackTitle.isEditable = false

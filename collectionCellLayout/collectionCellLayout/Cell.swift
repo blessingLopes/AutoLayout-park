@@ -67,7 +67,7 @@ class Cell: UICollectionViewCell {
         
         labelTemp.textAlignment = .center
         labelTemp.lineBreakMode = .byTruncatingMiddle
-        labelTemp.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleTitle1)
+        labelTemp.font = UIFont.preferredFont(forTextStyle: .title1)
         
         if #available(iOS 10.0, *) {  labelTemp.adjustsFontForContentSizeCategory = true    }
         labelTemp.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +76,7 @@ class Cell: UICollectionViewCell {
         
         land.textAlignment = .left
         land.lineBreakMode = .byTruncatingTail
-        land.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleSubheadline)
+        land.font = UIFont.preferredFont(forTextStyle: .subheadline)
         if #available(iOS 10.0, *) {  land.adjustsFontForContentSizeCategory = true    }
         land.translatesAutoresizingMaskIntoConstraints = false
         land.numberOfLines = 0
@@ -84,7 +84,7 @@ class Cell: UICollectionViewCell {
 
         city.textAlignment = .left
         city.lineBreakMode = .byTruncatingTail
-        city.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleCaption2)
+        city.font = UIFont.preferredFont(forTextStyle: .caption2)
         city.translatesAutoresizingMaskIntoConstraints = false
         city.numberOfLines = 0
         city.textColor = .white
@@ -92,7 +92,7 @@ class Cell: UICollectionViewCell {
         
         time.textAlignment = .left
         time.lineBreakMode = .byTruncatingTail
-        time.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleCaption2)
+        time.font = UIFont.preferredFont(forTextStyle: .caption2)
         time.translatesAutoresizingMaskIntoConstraints = false
         time.numberOfLines = 0
         time.textColor = .white
@@ -110,8 +110,8 @@ class Cell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        labelTemp.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleTitle1)
-        land.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleSubheadline)
+        labelTemp.font = UIFont.preferredFont(forTextStyle: .title1)
+        land.font = UIFont.preferredFont(forTextStyle: .subheadline)
     }
 
 	

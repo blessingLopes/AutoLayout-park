@@ -72,9 +72,9 @@ class TableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        name.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleHeadline)
-        time.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleSubheadline)
-        body.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleBody)
+        name.font = UIFont.preferredFont(forTextStyle: .headline)
+        time.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        body.font = UIFont.preferredFont(forTextStyle: .body)
     }
 
     
@@ -163,19 +163,19 @@ class TableViewCell: UITableViewCell {
         name.numberOfLines = 0
         name.textAlignment = .center
         name.textColor = .darkGray
-        name.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleHeadline)
+        name.font = UIFont.preferredFont(forTextStyle: .headline)
         name.translatesAutoresizingMaskIntoConstraints = false
         
         time.numberOfLines = 0
         time.textAlignment = .center
         time.textColor = .darkGray
-        time.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleSubheadline)
+        time.font = UIFont.preferredFont(forTextStyle: .subheadline)
         time.translatesAutoresizingMaskIntoConstraints = false
         
         body.numberOfLines = 0 // set to 0 to force to display untruncated text.
         body.textAlignment = .natural
         body.textColor = .darkGray
-        body.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleBody)
+        body.font = UIFont.preferredFont(forTextStyle: .body)
         body.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.addSubview(name)
