@@ -38,9 +38,9 @@ class CollectionViewController: UICollectionViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        prepareFontChangeObserver()
         
+        if #available(iOS 10.0, *){}
+        else{  prepareFontChangeObserver() }
     }
     
     
@@ -61,11 +61,15 @@ class CollectionViewController: UICollectionViewController{
     }
     
     
+    //MARK:- Status bar
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent  }
+    override var prefersStatusBarHidden: Bool {  return status  }
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation { return .slide  }
   
     
     //MARK:- Private convenience Methods
     
-    
+    // Animate the IOS status bar on/off from the screen.
     private func toogleStatus( _ on: Bool){
         UIView.animate(withDuration: 0.5, animations: {
             self.status = on
@@ -94,14 +98,22 @@ class CollectionViewController: UICollectionViewController{
         let queue = OperationQueue.main
         
         fontChangeObserver = notificationCenter.addObserver(forName: NSNotification.Name.UIContentSizeCategoryDidChange, object: application, queue: queue) {
-            // [unowned self] to prevent a block from holding a strong reference to self
+           
             [unowned self] _ in
+            /*
+             In IOS 9.x
+             In the cell's prepareForReuse() override, the text is updated to the user prefered size,
+             but not all cells are subject to that call. Reloading the collectionView when the app is
+             notified that the user changed the prefered front size makes sure all cells get updated.
+ 
             
-            // In the cell's prepareForReuse() override, the text is updated to the user prefered size,
-            // but not all cells are subject to that call. Reloading the collectionView when the app is
-            // notified that the user changed the prefered front size makes sure all cells get updated.
+            In IOS 10.x This method is unnecessary.
+            The system takes care of updatting the font size if the text's property
+            "adjustsFontForContentSizeCategory" is set to  true.
+             
+             */
             self.collectionView?.reloadData()
-     
+    
         }
     }
     
@@ -110,8 +122,7 @@ class CollectionViewController: UICollectionViewController{
     private func animateCellAt(index indexPath: IndexPath){
        
             theLayout?.tappedCellIndexPath = theLayout?.tappedCellIndexPath == indexPath ? nil : indexPath
-        
-        
+
             UIView.animate(
                 withDuration: 0.5,
                 delay: 0.0,
@@ -127,10 +138,7 @@ class CollectionViewController: UICollectionViewController{
         }
     
     
-    //MARK:- Status bar
-    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent  }
-    override var prefersStatusBarHidden: Bool {  return status  }
-    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation { return .slide  }
+  
     
     
     
