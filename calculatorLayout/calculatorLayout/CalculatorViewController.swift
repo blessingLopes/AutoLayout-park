@@ -21,11 +21,18 @@ class CalculatorViewController: UIViewController {
     // Closures to build buttons
     private  var createButtonWithText:(String) -> UIButton = { name   in
         
-        // NOTE:- WorkAround To prevent the button's text from disapearing when the rotation from lanscape to Portrait begins:
-        //  - Create a .Custom type uibutton
-        //  - Replace the text with a UIimage. The image will stay on at all times.
+        /*
+         NOTE: In IOS 9, to prevent the button's text from disapearing when the rotation from lanscape to Portrait begins:
+          - Create a .Custom type uibutton
+          - Replace the text with a UIimage, 
+            ex:   button.setImage(image, forState: .Normal) 
+          and the image will stay clear at all times during the rotation.
+        
+         In IOS 10 This glitch does NOT happen 👌🏼
+        */
+        
         let button   = UIButton(type: .custom)
-        //  button.setImage(image, forState: .Normal)
+    
 
         button.titleLabel?.font = UIFont(name: "HelveticaNeue-Thin", size: 20)
         button.setTitle(name, for: [])
@@ -61,9 +68,7 @@ class CalculatorViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator){
         super.viewWillTransition(to: size , with: coordinator)
         
-        coordinator.animate(alongsideTransition: {
-            context in
-            
+        coordinator.animate(alongsideTransition: { _ in
             if size.width > size.height {
                 self.simpleCalcStack?.arrangedSubviews[0].isHidden = false
             }
@@ -119,8 +124,8 @@ class CalculatorViewController: UIViewController {
         textHostView.addSubview(textView)
 
         
-       textView.bottomAnchor.constraint(equalTo: textHostView.bottomAnchor, constant: -5).isActive = true
-       textView.centerXAnchor.constraint(equalTo: textHostView.centerXAnchor).isActive = true
+        textView.bottomAnchor.constraint(equalTo: textHostView.bottomAnchor, constant: -5).isActive = true
+        textView.centerXAnchor.constraint(equalTo: textHostView.centerXAnchor).isActive = true
      
         
         let firstRow = UIStackView(arrangedSubviews: [equalButton, dotButton, zeroButton ])
