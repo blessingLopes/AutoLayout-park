@@ -33,8 +33,8 @@ func setup() {
     let title = setupTitle
     let profileView = setUpProfilePic
     let desc = setUpDescription
-    let plus = makeButtonWithTitle("+", fontSize: 20)
-    let back = makeButtonWithTitle("<", fontSize: 20)
+    let plus = makeButtonWith("+", 20)
+    let back = makeButtonWith("<", 20)
     
     addSubview(title)
     addSubview(profileView)
@@ -125,7 +125,7 @@ func setup() {
     
     
     
-    private func makeButtonWithTitle(_ title: String,  fontSize: Int) -> UIButton {
+    private var makeButtonWith: ( _ title: String, _ fontSize:  Int) -> UIButton  = { title , fontSize in
         let button = UIButton(type: .system)
         button.tintColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
         button.setTitle(title, for: UIControlState())
