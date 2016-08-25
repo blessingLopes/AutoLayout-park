@@ -56,18 +56,17 @@ class ViewController: UIViewController {
         view.insertSubview(snapshot!, aboveSubview: viewForCurrentOrientation)
         viewForFinal.alpha = 0
 
-        coordinator.animate(alongsideTransition: {
-            context in
+        coordinator.animate(alongsideTransition:
+            { _ in
+                snapshot?.alpha = 0.0
+                viewForFinal.alpha = 1.0
+                viewForCurrentOrientation.alpha = 0
             
-             snapshot?.alpha = 0.0
-             viewForFinal.alpha = 1.0
-             viewForCurrentOrientation.alpha = 0
-            
-            }, completion: { _ in
+            }, completion:
+                { _ in snapshot?.removeFromSuperview()
                 
-                snapshot?.removeFromSuperview()
-                
-        }  )
+                }
+        )
 
     
     }
