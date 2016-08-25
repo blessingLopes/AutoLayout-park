@@ -44,10 +44,10 @@ class SolarSystemVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .black
+        view.backgroundColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
         let layoutGuide:UILayoutGuide = UILayoutGuide()
         
-        let sizeWidth = UIScreen.main.bounds.width
+        let screenWidth = UIScreen.main.bounds.width
         let tap = UITapGestureRecognizer(target: self, action: #selector(SolarSystemVC.tapAction(_:) ))
    
         
@@ -80,7 +80,7 @@ class SolarSystemVC: UIViewController{
         let expandedMercuryY = mercury.widthAnchor.constraint(equalToConstant: 40)
         
 
-        let expandedMarsX = mars.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor, constant: -(sizeWidth / 4))
+        let expandedMarsX = mars.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor, constant: -(screenWidth / 4))
         let expandedMarsY = mars.topAnchor.constraint(equalTo: mercury.bottomAnchor, constant: -30)
         let expandedMArsWidth = mars.widthAnchor.constraint(equalToConstant: 60)
         
@@ -94,7 +94,7 @@ class SolarSystemVC: UIViewController{
         let expandedJupiterX = jupiter.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor)
         let expandedJupiterY = jupiter.centerYAnchor.constraint(equalTo: layoutGuide.centerYAnchor,constant: 30)
         
-        let expandedSaturnX = saturn.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor, constant: (sizeWidth / 4))
+        let expandedSaturnX = saturn.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor, constant: (screenWidth / 4))
         let expandedSaturnY = saturn.bottomAnchor.constraint(equalTo: uranus.topAnchor, constant: 20)
       
         
@@ -135,17 +135,19 @@ class SolarSystemVC: UIViewController{
         super.viewWillTransition(to: size, with: coordinator)
         
          self.view.layoutIfNeeded()
-        coordinator.animate(alongsideTransition: { _ in
-            
-            }, completion: { _ in
-                 UIView.animate(withDuration: 1.5, animations: {
-                    NSLayoutConstraint.deactivate(self.portraitConstraints)
-                    NSLayoutConstraint.activate(self.initialConstraints)
-                    self.view.layoutIfNeeded()
-                  
-                 })
-               
-        })
+        coordinator.animate(alongsideTransition:
+            { _ in
+            // nothing happens while rotating  
+            }, completion:
+                    { _ in
+                        UIView.animate(withDuration: 1.5, animations:
+                            {
+                                NSLayoutConstraint.deactivate(self.portraitConstraints)
+                                NSLayoutConstraint.activate(self.initialConstraints)
+                                self.view.layoutIfNeeded()
+                        })
+                    }
+        )
     }
 
     
