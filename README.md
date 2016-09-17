@@ -1,5 +1,5 @@
 #AutoLayout-park
-###XCode 8 beta 6 - Swift 3.0 - IOS 9+
+###XCode 8 - Swift 3.0 - IOS 9+
 
 
 
